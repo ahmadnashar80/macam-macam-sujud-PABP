@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misi Detektif Sujud - MPI PAI Kelas VII</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        },
+                        amber: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                        },
+                        cream: '#FDFBF7'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Amiri', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .arabic-text { font-family: 'Amiri', serif; font-size: 1.5rem; line-height: 2.2rem; }
+        .tab-btn.active { background-color: #047857; color: white; border-color: #047857; }
+        .card-hover { transition: all 0.25s ease-in-out; }
+        .card-hover:hover { transform: translateY(-3px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #059669; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #047857; }
+    </style>
+</head>
+<body class="h-full flex flex-col text-slate-800 antialiased selection:bg-emerald-200">
+
+    <header class="bg-emerald-800 text-white shadow-lg sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand Logo & Title -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('beranda')">
+                    <div class="w-10 h-10 rounded-xl bg-amber-400 text-emerald-950 flex items-center justify-center font-black text-xl shadow-inner border border-amber-300">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-lg sm:text-xl leading-tight tracking-wide text-amber-300">DETEKTIF SUJUD</h1>
+                        <p class="text-xs text-emerald-200 hidden sm:block">MPI PAI Kelas VII • Sujud Luar Salat</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium">
+                    <button onclick="switchTab('beranda')" class="nav-link px-3 py-2 rounded-lg hover:bg-emerald-700 transition flex items-center gap-1.5" id="nav-beranda"><i class="fa-solid fa-house text-xs"></i> Beranda</button>
+                    <button onclick="switchTab('materi')" class="nav-link px-3 py-2 rounded-lg hover:bg-emerald-700 transition flex items-center gap-1.5" id="nav-materi"><i class="fa-solid fa-book-open text-xs"></i> Zona Materi</button>
+                    <button onclick="switchTab('lab-kasus')" class="nav-link px-3 py-2 rounded-lg hover:bg-emerald-700 transition flex items-center gap-1.5" id="nav-lab-kasus"><i class="fa-solid fa-flask text-xs"></i> Lab Kasus</button>
+                    <div class="relative group">
+                        <button class="px-3 py-2 rounded-lg hover:bg-emerald-700 transition flex items-center gap-1.5"><i class="fa-solid fa-gamepad text-xs"></i> Mini Game <i class="fa-solid fa-chevron-down text-xs"></i></button>
+                        <div class="absolute right-0 w-52 bg-white text-slate-800 rounded-xl shadow-xl border border-slate-100 hidden group-hover:block py-2 z-50">
+                            <a href="#" onclick="switchTab('game-tebak')" class="block px-4 py-2 text-sm hover:bg-emerald-50 hover:text-emerald-700"><i class="fa-solid fa-circle-question mr-2 text-emerald-600"></i>Tebak Jenis Sujud</a>
+                            <a href="#" onclick="switchTab('game-pasang')" class="block px-4 py-2 text-sm hover:bg-emerald-50 hover:text-emerald-700"><i class="fa-solid fa-puzzle-piece mr-2 text-amber-600"></i>Pasangkan Kartu</a>
+                            <a href="#" onclick="switchTab('game-tf')" class="block px-4 py-2 text-sm hover:bg-emerald-50 hover:text-emerald-700"><i class="fa-solid fa-check-double mr-2 text-blue-600"></i>Benar atau Salah</a>
+                            <a href="#" onclick="switchTab('game-flowchart')" class="block px-4 py-2 text-sm hover:bg-emerald-50 hover:text-emerald-700"><i class="fa-solid fa-diagram-project mr-2 text-purple-600"></i>Susun Flowchart</a>
+                            <a href="#" onclick="switchTab('game-simulasi')" class="block px-4 py-2 text-sm hover:bg-emerald-50 hover:text-emerald-700"><i class="fa-solid fa-masks-theater mr-2 text-rose-600"></i>Simulasi Keputusan</a>
+                        </div>
+                    </div>
+                    <button onclick="switchTab('asesmen')" class="nav-link px-3 py-2 rounded-lg hover:bg-emerald-700 transition flex items-center gap-1.5" id="nav-asesmen"><i class="fa-solid fa-graduation-cap text-xs"></i> Asesmen</button>
+                    <button onclick="switchTab('refleksi')" class="nav-link px-3 py-2 rounded-lg hover:bg-emerald-700 transition flex items-center gap-1.5" id="nav-refleksi"><i class="fa-solid fa-heart-pulse text-xs"></i> Refleksi</button>
+                    <button onclick="switchTab('guru')" class="bg-amber-500 text-emerald-950 font-bold px-3 py-1.5 rounded-lg hover:bg-amber-400 transition ml-2 shadow flex items-center gap-1 text-xs" id="nav-guru"><i class="fa-solid fa-chalkboard-user"></i> Pusat Guru</button>
+                </nav>
+
+                <!-- Student Badge & Mobile Menu Button -->
+                <div class="flex items-center space-x-3">
+                    <div id="student-badge" class="hidden sm:flex items-center gap-2 bg-emerald-900/80 px-3 py-1.5 rounded-full border border-emerald-600/50 text-xs">
+                        <i class="fa-solid fa-user-ninja text-amber-300"></i>
+                        <span id="badge-name" class="font-medium text-emerald-100">Detektif Anonim</span>
+                    </div>
+                    <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-emerald-900 border-t border-emerald-700 px-4 py-3 space-y-2">
+            <button onclick="switchTab('beranda'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded text-emerald-100 hover:bg-emerald-800"><i class="fa-solid fa-house mr-2"></i>Beranda</button>
+            <button onclick="switchTab('materi'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded text-emerald-100 hover:bg-emerald-800"><i class="fa-solid fa-book-open mr-2"></i>Zona Materi</button>
+            <button onclick="switchTab('lab-kasus'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded text-emerald-100 hover:bg-emerald-800"><i class="fa-solid fa-flask mr-2"></i>Lab Kasus Analysis</button>
+            <div class="border-t border-emerald-800 my-1 pt-1">
+                <p class="px-3 text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">Mini Games</p>
+                <button onclick="switchTab('game-tebak'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded text-emerald-100 hover:bg-emerald-800 text-sm"><i class="fa-solid fa-circle-question mr-2 text-emerald-400"></i>1. Tebak Jenis Sujud</button>
+                <button onclick="switchTab('game-pasang'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded text-emerald-100 hover:bg-emerald-800 text-sm"><i class="fa-solid fa-puzzle-piece mr-2 text-amber-400"></i>2. Pasangkan Kartu</button>
+                <button onclick="switchTab('game-tf'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded text-emerald-100 hover:bg-emerald-800 text-sm"><i class="fa-solid fa-check-double mr-2 text-blue-400"></i>3. Benar / Salah</button>
+                <button onclick="switchTab('game-flowchart'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded text-emerald-100 hover:bg-emerald-800 text-sm"><i class="fa-solid fa-diagram-project mr-2 text-purple-400"></i>4. Susun Flowchart Logika</button>
+                <button onclick="switchTab('game-simulasi'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded text-emerald-100 hover:bg-emerald-800 text-sm"><i class="fa-solid fa-masks-theater mr-2 text-rose-400"></i>5. Simulasi Keputusan Cerita</button>
+            </div>
+            <button onclick="switchTab('asesmen'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded text-emerald-100 hover:bg-emerald-800"><i class="fa-solid fa-graduation-cap mr-2"></i>Asesmen Akhir</button>
+            <button onclick="switchTab('refleksi'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded text-emerald-100 hover:bg-emerald-800"><i class="fa-solid fa-heart-pulse mr-2"></i>Refleksi Siswa</button>
+            <button onclick="switchTab('guru'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded bg-amber-500 text-emerald-950 font-bold hover:bg-amber-400"><i class="fa-solid fa-chalkboard-user mr-2"></i>Pusat Guru / Panduan PJJ</button>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+
+        <!-- ==================== SECTION 1: BERANDA ==================== -->
+        <section id="sec-beranda" class="tab-content block space-y-8">
+            <div class="bg-gradient-to-r from-emerald-800 via-emerald-700 to-teal-800 rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 opacity-10 text-white pointer-events-none">
+                    <i class="fa-solid fa-mosque text-[280px]"></i>
+                </div>
+                
+                <div class="max-w-3xl relative z-10 space-y-4">
+                    <div class="inline-flex items-center gap-2 bg-amber-400/20 text-amber-300 border border-amber-400/30 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm">
+                        <i class="fa-solid fa-shield-halved"></i> Modul Pembelajaran Jarak Jauh (PJJ Kabut Asap)
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
+                        MISI DETEKTIF SUJUD
+                    </h1>
+                    <p class="text-lg sm:text-xl text-amber-200 font-medium">
+                        "Pecahkan Kasus, Temukan Sujud yang Tepat!"
+                    </p>
+                    <p class="text-emerald-100 text-sm sm:text-base leading-relaxed">
+                        Selamat datang, Calon Detektif Fiqh! Tahukah kamu bahwa dalam situasi tertentu—saat mendapat kabar bahagia, lupa rakaat salat, atau membaca ayat Al-Qur'an—ada sujud khusus yang disyariatkan? Mari bantu memecahkan misteri kasus sehari-hari secara logis dan tepat!
+                    </p>
+
+                    <!-- Student Name Input Box -->
+                    <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 max-w-md my-4 space-y-2">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-amber-300">
+                            <i class="fa-solid fa-id-badge mr-1"></i> Identitas Detektif Siswa
+                        </label>
+                        <div class="flex gap-2">
+                            <input type="text" id="input-student-name" placeholder="Masukkan Nama Lengkapmu..." class="flex-1 px-4 py-2 rounded-xl text-slate-800 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400">
+                            <button onclick="saveStudentName()" class="bg-amber-400 hover:bg-amber-300 text-emerald-950 px-4 py-2 rounded-xl text-sm font-bold transition shadow">
+                                Simpan
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <button onclick="switchTab('lab-kasus')" class="bg-amber-400 hover:bg-amber-300 text-emerald-950 font-bold px-6 py-3.5 rounded-2xl shadow-lg transition flex items-center gap-2 text-base transform active:scale-95">
+                            <i class="fa-solid fa-play"></i> MULAI MISI DETEKTIF
+                        </button>
+                        <button onclick="openModal('modal-petunjuk')" class="bg-emerald-900/60 hover:bg-emerald-900 text-white font-semibold px-5 py-3.5 rounded-2xl border border-emerald-500/40 transition flex items-center gap-2 text-sm">
+                            <i class="fa-solid fa-circle-info text-amber-300"></i> PETUNJUK & TUJUAN
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Targets & Progress Summary -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Target ATP Card -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80 space-y-3 card-hover">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-800 text-lg">Target ATP 7.1.1</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Menguraikan pengertian, tujuan, dan tata cara sujud syukur, sujud sahwi, serta sujud tilawah; menganalisis situasi konkret; serta menyusun logika keputusan (flowchart) secara kognitif-numerasi.
+                    </p>
+                </div>
+
+                <!-- Three Types Quick Reference Card -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80 space-y-3 card-hover">
+                    <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-800 text-lg">3 Kategori Sujud</h3>
+                    <ul class="text-xs text-slate-600 space-y-1.5">
+                        <li><span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 mr-2"></span><strong>Syukur:</strong> Respon nikmat / bebas musibah.</li>
+                        <li><span class="inline-block w-2.5 h-2.5 rounded-full bg-amber-500 mr-2"></span><strong>Sahwi:</strong> Lupa / ragu dalam salat.</li>
+                        <li><span class="inline-block w-2.5 h-2.5 rounded-full bg-teal-500 mr-2"></span><strong>Tilawah:</strong> Membaca/mendengar ayat sajdah.</li>
+                    </ul>
+                </div>
+
+                <!-- Progress Tracker Card -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80 space-y-3 card-hover">
+                    <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-800 text-lg">Capaian Detektif</h3>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex justify-between font-semibold">
+                            <span>Lab Kasus Selesai:</span>
+                            <span id="stat-kasus-count" class="text-emerald-700">0 / 15</span>
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-2">
+                            <div id="stat-kasus-bar" class="bg-emerald-600 h-2 rounded-full" style="width: 0%"></div>
+                        </div>
+                        <div class="flex justify-between font-semibold pt-1">
+                            <span>Nilai Asesmen Terakhir:</span>
+                            <span id="stat-asesmen-score" class="text-amber-600">Belum Ujian</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal Petunjuk -->
+        <div id="modal-petunjuk" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+            <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <h3 class="text-xl font-bold text-emerald-800 flex items-center gap-2">
+                        <i class="fa-solid fa-compass text-amber-500"></i> Petunjuk & Tujuan Pembelajaran
+                    </h3>
+                    <button onclick="closeModal('modal-petunjuk')" class="text-slate-400 hover:text-slate-600 text-2xl font-bold">&times;</button>
+                </div>
+                <div class="space-y-4 text-sm text-slate-600 leading-relaxed">
+                    <h4 class="font-bold text-slate-800 text-base">Alur Penggunaan Aplikasi:</h4>
+                    <ol class="list-decimal pl-5 space-y-2">
+                        <li><strong>Zona Materi:</strong> Pelajari pengertian, sebab, tata cara, dan perbedaan pendapat fikih untuk 3 jenis sujud.</li>
+                        <li><strong>Laboratorium Kasus:</strong> Uji keahlian analisis dengan meneliti 15 narasi kasus kehidupan sehari-hari.</li>
+                        <li><strong>Mini Game Edukasi:</strong> Asah ketelitian melalui 5 jenis game interaktif (Tebak Sujud, Pasangkan Kartu, Benar/Salah, Editor Flowchart Jika-Maka, dan Simulasi Keputusan).</li>
+                        <li><strong>Asesmen & Refleksi:</strong> Kerjakan evaluasi akhir untuk mengukur pemahaman dan isi jurnal refleksi diri.</li>
+                    </ol>
+                    <div class="bg-amber-50 p-4 rounded-xl border border-amber-200 text-amber-800 text-xs">
+                        <i class="fa-solid fa-triangle-exclamation mr-1"></i> <strong>Catatan Fikih:</strong> Aplikasi ini menyajikan fikih berlandaskan mazhab yang lazim dipelajari dalam Kurikulum Merdeka PAI SMP (umumnya Mazhab Syafi'i), dengan menyertakan penjelasan variasi pendapat ulama agar siswa berwawasan luas.
+                    </div>
+                </div>
+                <div class="text-right border-t pt-4">
+                    <button onclick="closeModal('modal-petunjuk')" class="bg-emerald-700 text-white font-bold px-5 py-2.5 rounded-xl hover:bg-emerald-800 transition">Mengerti!</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== SECTION 2: ZONA MATERI ==================== -->
+        <section id="sec-materi" class="tab-content hidden space-y-6">
+            <div class="text-center space-y-2 max-w-2xl mx-auto">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-800">ZONA MATERI FIQIH SUJUD</h2>
+                <p class="text-sm text-slate-600">Pelajari landasan hukum, sebab-sebab, tata cara, dan bacaan setiap jenis sujud di luar kebiasaan salat fardhu.</p>
+            </div>
+
+            <!-- Material Tabs Selector -->
+            <div class="flex justify-center border-b border-slate-200 gap-2 sm:gap-4 text-xs sm:text-sm font-semibold overflow-x-auto pb-1">
+                <button onclick="switchMateriTab('syukur')" id="materi-tab-syukur" class="tab-btn px-4 py-2.5 rounded-t-xl border-b-2 border-transparent hover:text-emerald-700 transition flex items-center gap-2 active">
+                    <i class="fa-solid fa-hands-praying text-emerald-600"></i> Sujud Syukur
+                </button>
+                <button onclick="switchMateriTab('sahwi')" id="materi-tab-sahwi" class="tab-btn px-4 py-2.5 rounded-t-xl border-b-2 border-transparent hover:text-amber-700 transition flex items-center gap-2">
+                    <i class="fa-solid fa-brain text-amber-600"></i> Sujud Sahwi
+                </button>
+                <button onclick="switchMateriTab('tilawah')" id="materi-tab-tilawah" class="tab-btn px-4 py-2.5 rounded-t-xl border-b-2 border-transparent hover:text-teal-700 transition flex items-center gap-2">
+                    <i class="fa-solid fa-book-quran text-teal-600"></i> Sujud Tilawah
+                </button>
+            </div>
+
+            <!-- Content A: Sujud Syukur -->
+            <div id="materi-card-syukur" class="materi-card space-y-6 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm">
+                <div class="flex flex-col md:flex-row gap-6 items-start">
+                    <div class="flex-1 space-y-4">
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full"><i class="fa-solid fa-star"></i> Kategori 1</span>
+                        <h3 class="text-2xl font-bold text-emerald-900">1. Sujud Syukur</h3>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            <strong>Pengertian & Tujuan:</strong> Sujud yang dilakukan sebagai ungkapan rasa syukur seorang hamba kepada Allah SWT atas nikmat besar yang tiba-tiba didapatkan atau karena terhindar dari bahaya/musibah yang menakutkan.
+                        </p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                                <h4 class="font-bold text-xs uppercase tracking-wider text-emerald-700"><i class="fa-solid fa-circle-check"></i> Sebab Pelaksanaan</h4>
+                                <ul class="text-xs text-slate-600 space-y-1 list-disc pl-4">
+                                    <li>Mendapat kabar gembira yang luar biasa (misal: lulus ujian, sembuh dari sakit).</li>
+                                    <li>Terhindar dari bencana besar (misal: selamat dari kecelakaan lalu lintas).</li>
+                                </ul>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                                <h4 class="font-bold text-xs uppercase tracking-wider text-emerald-700"><i class="fa-solid fa-list-ol"></i> Ketentuan Dasar</h4>
+                                <ul class="text-xs text-slate-600 space-y-1 list-disc pl-4">
+                                    <li>Dilakukan <strong>1 kali sujud saja</strong> di luar salat.</li>
+                                    <li>Mayoritas ulama menyaratkan suci dari hadas (berwudhu), menghadap kiblat, dan menutup aurat.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Bacaan Sujud Syukur -->
+                        <div class="bg-emerald-50/80 p-5 rounded-2xl border border-emerald-200/60 space-y-2">
+                            <h4 class="font-bold text-sm text-emerald-900 flex items-center gap-2">
+                                <i class="fa-solid fa-quote-left text-emerald-600"></i> Bacaan Sujud Syukur
+                            </h4>
+                            <p class="arabic-text text-right font-semibold text-emerald-950 py-2">
+                                سَجَدَ وَجْهِيَ لِلَّذِي خَلَقَهُ وَصَوَّرَهُ وَشَقَّ سَمْعَهُ وَبَصَرَهُ بِحَوْلِهِ وَقُوَّتِهِ
+                            </p>
+                            <p class="text-xs text-slate-600 italic">
+                                "Sajada wajhiya lilladzi khalaqahu wa shawwarahu wa syaqqa sam'ahu wa basharahu bihaulihi wa quwwatih."
+                            </p>
+                            <p class="text-xs text-slate-700 font-medium">
+                                Artinya: "Aku bersujud kepada Tuhan yang telah menciptakan jiwaku, membentuk rupa, dan membuka pendengaran serta penglihatanku dengan daya dan kekuatan-Nya."
+                            </p>
+                        </div>
+
+                        <div class="bg-amber-50 p-4 rounded-xl text-xs text-amber-900 space-y-1 border border-amber-200">
+                            <strong><i class="fa-solid fa-triangle-exclamation"></i> Kesalahan Umum & Catatan Fiqih:</strong>
+                            <p>Sujud Syukur HARAM dilakukan di dalam salat fardhu (dapat membatalkan salat jika disengaja). Sebagian ulama (seperti Ibnu Taimiyah) membolehkan tanpa wudhu jika keadaan mendadak, namun Mazhab Syafi'i tetap mewajibkan syarat suci seperti salat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content B: Sujud Sahwi -->
+            <div id="materi-card-sahwi" class="materi-card hidden space-y-6 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm">
+                <div class="flex flex-col md:flex-row gap-6 items-start">
+                    <div class="flex-1 space-y-4">
+                        <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full"><i class="fa-solid fa-star"></i> Kategori 2</span>
+                        <h3 class="text-2xl font-bold text-amber-900">2. Sujud Sahwi</h3>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            <strong>Pengertian & Tujuan:</strong> Sujud yang dilakukan karena adanya kekeliruan, kelebihan, kekurangan, atau keraguan rakaat di dalam salat akibat lupa (sahw), sebagai sarana menyempurnakan ibadah salat.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                                <h4 class="font-bold text-xs uppercase tracking-wider text-amber-700"><i class="fa-solid fa-circle-check"></i> Sebab Pelaksanaan</h4>
+                                <ul class="text-xs text-slate-600 space-y-1 list-disc pl-4">
+                                    <li>Ketinggalan Sunnah Ab'adh (seperti Tasyahhud Awwal atau Doa Qunut bagi Mazhab Syafi'i).</li>
+                                    <li>Ragu jumlah rakaat (misal: bingung 3 atau 4 rakaat, maka ambil jumlah yang terdefinisi yakin/terkecil).</li>
+                                    <li>Kelebihan gerakan rukun secara tidak sengaja.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                                <h4 class="font-bold text-xs uppercase tracking-wider text-amber-700"><i class="fa-solid fa-list-ol"></i> Tata Cara & Waktu</h4>
+                                <ul class="text-xs text-slate-600 space-y-1 list-disc pl-4">
+                                    <li>Dilakukan sebanyak <strong>2 kali sujud</strong>.</li>
+                                    <li>Umumnya dilakukan di akhir salat <strong>sebelum salam</strong> (atau setelah salam jika ada jeda singkat sesuai kondisi fikih tertentu).</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Bacaan Sujud Sahwi -->
+                        <div class="bg-amber-50/80 p-5 rounded-2xl border border-amber-200/60 space-y-2">
+                            <h4 class="font-bold text-sm text-amber-900 flex items-center gap-2">
+                                <i class="fa-solid fa-quote-left text-amber-600"></i> Bacaan Sujud Sahwi
+                            </h4>
+                            <p class="arabic-text text-right font-semibold text-amber-950 py-2">
+                                سُبْحَانَ مَنْ لَا يَنَامُ وَلَا يَسْهُو
+                            </p>
+                            <p class="text-xs text-slate-600 italic">
+                                "Subhana man laa yanaamu wa laa yashuu."
+                            </p>
+                            <p class="text-xs text-slate-700 font-medium">
+                                Artinya: "Maha Suci Dzat yang tidak pernah tidur dan tidak pernah lupa."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content C: Sujud Tilawah -->
+            <div id="materi-card-tilawah" class="materi-card hidden space-y-6 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm">
+                <div class="flex flex-col md:flex-row gap-6 items-start">
+                    <div class="flex-1 space-y-4">
+                        <span class="bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1 rounded-full"><i class="fa-solid fa-star"></i> Kategori 3</span>
+                        <h3 class="text-2xl font-bold text-teal-900">3. Sujud Tilawah</h3>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            <strong>Pengertian & Tujuan:</strong> Sujud yang dikerjakan ketika membaca atau mendengar ayat-ayat Sajdah dalam Al-Qur'an (terdapat sekitar 15 tempat dalam Al-Qur'an), baik di dalam maupun di luar salat.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                                <h4 class="font-bold text-xs uppercase tracking-wider text-teal-700"><i class="fa-solid fa-circle-check"></i> Ciri Ayat Sajdah</h4>
+                                <p class="text-xs text-slate-600 leading-relaxed">
+                                    Di dalam Al-Qur'an ditandai dengan kubah kecil atau tulisan kaligrafi <span class="font-bold text-emerald-800">سجدة</span> di pinggir halaman/akhir ayat.
+                                </p>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                                <h4 class="font-bold text-xs uppercase tracking-wider text-teal-700"><i class="fa-solid fa-list-ol"></i> Jumlah & Tata Cara</h4>
+                                <ul class="text-xs text-slate-600 space-y-1 list-disc pl-4">
+                                    <li>Dilakukan <strong>1 kali sujud saja</strong>.</li>
+                                    <li><strong>Di Luar Salat:</strong> Berdiri/duduk, berniat, takbiratul ihram, sujud 1 kali, duduk sejenak, salam.</li>
+                                    <li><strong>Di Dalam Salat:</strong> Begitu ayat sajdah selesai dibaca, langsung takbir dan sujud 1 kali, lalu bangkit berdiri melanjutkan salat.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Bacaan Sujud Tilawah -->
+                        <div class="bg-teal-50/80 p-5 rounded-2xl border border-teal-200/60 space-y-2">
+                            <h4 class="font-bold text-sm text-teal-900 flex items-center gap-2">
+                                <i class="fa-solid fa-quote-left text-teal-600"></i> Bacaan Sujud Tilawah
+                            </h4>
+                            <p class="arabic-text text-right font-semibold text-teal-950 py-2">
+                                سَجَدَ وَجْهِيَ لِلَّذِي خَلَقَهُ وَصَوَّرَهُ وَشَقَّ سَمْعَهُ وَبَصَرَهُ بِحَوْلِهِ وَقُوَّتِهِ فَتَبَارَكَ اللهُ أَحْسَنُ الْخَالِقِيْنَ
+                            </p>
+                            <p class="text-xs text-slate-600 italic">
+                                "Sajada wajhiya lilladzi khalaqahu wa shawwarahu wa syaqqa sam'ahu wa basharahu bihaulihi wa quwwatihi fatabaarakallahu ahsanul khaaliqiin."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 3: LABORATORIUM KASUS ==================== -->
+        <section id="sec-lab-kasus" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6">
+                <!-- Lab Header -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 pb-4">
+                    <div>
+                        <div class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 uppercase tracking-wider">
+                            <i class="fa-solid fa-microscope"></i> Laboratorium Analisis Kasus
+                        </div>
+                        <h2 class="text-2xl font-extrabold text-slate-800">Ruang Investigasi Detektif Fiqh</h2>
+                    </div>
+                    <div class="bg-emerald-50 text-emerald-800 font-bold px-4 py-2 rounded-xl text-sm border border-emerald-200">
+                        Kasus ke: <span id="lab-case-number">1</span> / 15
+                    </div>
+                </div>
+
+                <!-- Case Card View -->
+                <div id="lab-case-container" class="space-y-6">
+                    <div class="bg-amber-50/50 p-6 rounded-2xl border border-amber-200/80 space-y-3">
+                        <div class="flex items-center gap-2 text-amber-800 font-semibold text-sm">
+                            <i class="fa-solid fa-folder-open text-amber-600"></i> Narasi Kasus <span id="lab-case-id-badge" class="text-xs bg-amber-200 text-amber-900 px-2 py-0.5 rounded-full">#K-01</span>
+                        </div>
+                        <p id="lab-case-narrative" class="text-slate-800 text-base sm:text-lg leading-relaxed font-medium">
+                            "Ahmad sedang mengikuti ujian kenaikan tingkat pramuka. Saat pengumuman, ia dinyatakan lulus sebagai peserta terbaik dan memperoleh beasiswa."
+                        </p>
+                    </div>
+
+                    <!-- User Answer Input Options -->
+                    <div class="space-y-3">
+                        <label class="block text-sm font-bold text-slate-700">Tentukan Jenis Sujud yang Tepat:</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="lab-options-grid">
+                            <!-- Dynamic Radio Buttons generated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="pt-2 flex justify-between items-center">
+                        <button onclick="checkLabAnswer()" id="btn-check-lab" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-6 py-3 rounded-xl shadow transition">
+                            <i class="fa-solid fa-magnifying-glass-chart mr-1"></i> Periksa Jawaban
+                        </button>
+                        <button onclick="nextLabCase()" id="btn-next-lab" class="hidden bg-amber-500 hover:bg-amber-400 text-emerald-950 font-bold px-6 py-3 rounded-xl shadow transition">
+                            Kasus Berikutnya <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+
+                    <!-- Feedback Box -->
+                    <div id="lab-feedback-box" class="hidden p-5 rounded-2xl border space-y-2">
+                        <div id="lab-feedback-title" class="font-bold text-base flex items-center gap-2"></div>
+                        <p id="lab-feedback-reason" class="text-sm text-slate-700 leading-relaxed"></p>
+                        <div id="lab-feedback-concept" class="text-xs font-semibold p-3 bg-white/80 rounded-xl border border-slate-200 mt-2"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: GAME 1 TEBAK JENIS SUJUD ==================== -->
+        <section id="sec-game-tebak" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6 max-w-3xl mx-auto">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <div>
+                        <span class="text-xs font-bold text-emerald-600 uppercase">Game #1</span>
+                        <h2 class="text-2xl font-bold text-slate-800">Tebak Jenis Sujud</h2>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs text-slate-500">Skor Kamu:</span>
+                        <p id="g1-score" class="text-2xl font-black text-emerald-700">0</p>
+                    </div>
+                </div>
+
+                <div id="g1-container" class="space-y-6">
+                    <div class="flex justify-between items-center text-xs font-semibold text-slate-500">
+                        <span>Soal <span id="g1-q-num">1</span> dari 10</span>
+                        <span id="g1-category-badge" class="bg-slate-100 px-2.5 py-1 rounded-full text-slate-700">Kategori</span>
+                    </div>
+
+                    <h3 id="g1-question-text" class="text-lg font-bold text-slate-800 leading-snug">
+                        Memuat pertanyaan...
+                    </h3>
+
+                    <div id="g1-options" class="space-y-3">
+                        <!-- Dynamic Options -->
+                    </div>
+
+                    <div id="g1-explanation" class="hidden p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700"></div>
+
+                    <div class="text-right">
+                        <button onclick="nextG1Question()" id="btn-g1-next" class="hidden bg-emerald-700 text-white font-bold px-5 py-2.5 rounded-xl hover:bg-emerald-800">
+                            Lanjut <i class="fa-solid fa-chevron-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Result Card Game 1 -->
+                <div id="g1-result" class="hidden text-center py-8 space-y-4">
+                    <i class="fa-solid fa-trophy text-6xl text-amber-400 animate-bounce"></i>
+                    <h3 class="text-2xl font-extrabold text-slate-800">Permainan Selesai!</h3>
+                    <p class="text-sm text-slate-600">Skor Akhir Kamu: <span id="g1-final-score" class="text-2xl font-black text-emerald-700">0</span> / 100</p>
+                    <button onclick="resetG1()" class="bg-amber-400 hover:bg-amber-300 text-emerald-950 font-bold px-6 py-3 rounded-xl transition">
+                        <i class="fa-solid fa-rotate-right mr-1"></i> Ulangi Game
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 5: GAME 2 PASANGKAN KARTU ==================== -->
+        <section id="sec-game-pasang" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <div>
+                        <span class="text-xs font-bold text-amber-600 uppercase">Game #2</span>
+                        <h2 class="text-2xl font-bold text-slate-800">Pasangkan Kartu Fiqh</h2>
+                        <p class="text-xs text-slate-500">Klik satu kartu di kiri, lalu klik pasangannya yang cocok di kanan!</p>
+                    </div>
+                    <button onclick="initGame2()" class="text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg">
+                        <i class="fa-solid fa-arrows-rotate mr-1"></i> Acak Kartu
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Left Column (Item Concept) -->
+                    <div class="space-y-3">
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Pernyataan / Situasi</h4>
+                        <div id="g2-left-cards" class="space-y-2"></div>
+                    </div>
+                    <!-- Right Column (Matching Sujud) -->
+                    <div class="space-y-3">
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Pasangan Sujud / Ketentuan</h4>
+                        <div id="g2-right-cards" class="space-y-2"></div>
+                    </div>
+                </div>
+
+                <div id="g2-status" class="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 text-emerald-900 text-xs font-semibold flex justify-between items-center">
+                    <span>Pasangan Terhubung: <span id="g2-matched-count">0</span> / 6</span>
+                    <span id="g2-feedback-msg" class="text-amber-700">Pilih kartu pertama!</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 6: GAME 3 BENAR ATAU SALAH ==================== -->
+        <section id="sec-game-tf" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6 max-w-3xl mx-auto">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <div>
+                        <span class="text-xs font-bold text-blue-600 uppercase">Game #3</span>
+                        <h2 class="text-2xl font-bold text-slate-800">Uji Ketelitian: Benar atau Salah?</h2>
+                    </div>
+                    <span class="bg-blue-50 text-blue-800 text-xs font-bold px-3 py-1 rounded-full">10 Pernyataan</span>
+                </div>
+
+                <div id="g3-container" class="space-y-6">
+                    <div class="text-xs font-semibold text-slate-400">Pernyataan <span id="g3-num">1</span> / 10</div>
+                    <p id="g3-statement" class="text-lg font-bold text-slate-800 leading-relaxed bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        Memuat pernyataan...
+                    </p>
+
+                    <div class="flex gap-4">
+                        <button onclick="answerG3(true)" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-2xl text-lg shadow transition flex justify-center items-center gap-2">
+                            <i class="fa-solid fa-circle-check"></i> BENAR
+                        </button>
+                        <button onclick="answerG3(false)" class="flex-1 bg-rose-600 hover:bg-rose-700 text-white font-bold py-4 rounded-2xl text-lg shadow transition flex justify-center items-center gap-2">
+                            <i class="fa-solid fa-circle-xmark"></i> SALAH
+                        </button>
+                    </div>
+
+                    <div id="g3-feedback" class="hidden p-4 rounded-2xl border text-xs leading-relaxed"></div>
+
+                    <div class="text-right">
+                        <button onclick="nextG3()" id="btn-g3-next" class="hidden bg-slate-800 text-white font-bold px-5 py-2.5 rounded-xl hover:bg-slate-900">
+                            Pernyataan Berikutnya <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="g3-result" class="hidden text-center py-6 space-y-3">
+                    <h3 class="text-2xl font-bold text-slate-800">Hasil Tes Ketelitian</h3>
+                    <p class="text-sm text-slate-600">Skor Akhir: <span id="g3-final-score" class="text-2xl font-black text-emerald-700">0</span></p>
+                    <button onclick="initG3()" class="bg-emerald-700 text-white font-bold px-5 py-2.5 rounded-xl">Ulangi Tes</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 7: GAME 4 SUSUN FLOWCHART LOGIKA ==================== -->
+        <section id="sec-game-flowchart" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b pb-4">
+                    <div>
+                        <span class="text-xs font-bold text-purple-600 uppercase">Game #4 • ATP 7.1.1 Kognitif Numerasi</span>
+                        <h2 class="text-2xl font-bold text-slate-800">Susun Flowchart Logika "Jika-Maka"</h2>
+                        <p class="text-xs text-slate-500">Urutkan diagram alur berpikir untuk menentukan jenis sujud berdasarkan kondisi tertentu!</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="resetFlowchart()" class="text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-xl">
+                            <i class="fa-solid fa-rotate-left mr-1"></i> Reset
+                        </button>
+                        <button onclick="openModal('modal-flowchart-sample')" class="text-xs font-bold bg-purple-100 text-purple-800 hover:bg-purple-200 px-3 py-2 rounded-xl">
+                            <i class="fa-solid fa-eye mr-1"></i> Lihat Contoh Kunci
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Interactive Drag/Click Builder Area -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- Available Flowchart Blocks -->
+                    <div class="lg:col-span-5 bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-3">
+                        <h4 class="text-xs font-bold text-slate-600 uppercase tracking-wider">Blok Logika Tersedia (Klik untuk menambah)</h4>
+                        <div id="flow-source-blocks" class="space-y-2">
+                            <!-- Dynamic Flowchart Blocks -->
+                        </div>
+                    </div>
+
+                    <!-- Flowchart Canvas / Canvas Steps Container -->
+                    <div class="lg:col-span-7 bg-purple-50/40 p-5 rounded-2xl border border-purple-200 space-y-3">
+                        <h4 class="text-xs font-bold text-purple-900 uppercase tracking-wider flex items-center justify-between">
+                            <span><i class="fa-solid fa-diagram-next"></i> Urutan Alur Keputusan Kamu</span>
+                            <span class="text-[10px] text-purple-600 font-normal">Mulai &rarr; Selesai</span>
+                        </h4>
+                        
+                        <div id="flow-user-canvas" class="space-y-2 min-h-[300px] flex flex-col justify-start">
+                            <p id="flow-empty-msg" class="text-xs text-purple-400 italic text-center py-12">Belum ada blok yang ditambahkan. Klik blok di sebelah kiri!</p>
+                        </div>
+
+                        <button onclick="verifyFlowchart()" class="w-full bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 rounded-xl shadow transition">
+                            <i class="fa-solid fa-check-double mr-1"></i> Periksa Ketepatan Logika
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Result Output -->
+                <div id="flow-result-box" class="hidden p-5 rounded-2xl border text-xs leading-relaxed"></div>
+            </div>
+        </section>
+
+        <!-- Modal Sample Flowchart -->
+        <div id="modal-flowchart-sample" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+            <div class="bg-white rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+                <div class="flex justify-between items-center border-b pb-3">
+                    <h3 class="font-bold text-slate-800">Contoh Alur Kunci Flowchart Fiqh</h3>
+                    <button onclick="closeModal('modal-flowchart-sample')" class="text-slate-400 text-xl">&times;</button>
+                </div>
+                <div class="space-y-2 text-xs font-mono bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <div class="text-emerald-700 font-bold">[1. MULAI]</div>
+                    <div class="pl-3">&darr; Apakah terkait lupa / kekeliruan dalam salat?</div>
+                    <div class="pl-6 text-amber-700">&rarr; YA: Sujud Sahwi (2x sujud sebelum salam)</div>
+                    <div class="pl-3">&darr; TIDAK: Apakah membaca / mendengar Ayat Sajdah?</div>
+                    <div class="pl-6 text-teal-700">&rarr; YA: Sujud Tilawah (1x sujud)</div>
+                    <div class="pl-3">&darr; TIDAK: Apakah mendapat nikmat besar / bebas bencana?</div>
+                    <div class="pl-6 text-emerald-700">&rarr; YA: Sujud Syukur (1x sujud di luar salat)</div>
+                    <div class="text-rose-700 font-bold">[SELESAI]</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== SECTION 8: GAME 5 SIMULASI KEPUTUSAN ==================== -->
+        <section id="sec-game-simulasi" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6 max-w-3xl mx-auto">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <div>
+                        <span class="text-xs font-bold text-rose-600 uppercase">Game #5</span>
+                        <h2 class="text-2xl font-bold text-slate-800">Simulasi Keputusan Berbasis Cerita</h2>
+                    </div>
+                    <span id="g5-step-badge" class="bg-rose-50 text-rose-800 text-xs font-bold px-3 py-1 rounded-full">Skenario 1 / 5</span>
+                </div>
+
+                <div id="g5-container" class="space-y-6">
+                    <div class="bg-rose-50/50 p-6 rounded-2xl border border-rose-100 space-y-3">
+                        <span class="text-xs font-bold text-rose-700 uppercase"><i class="fa-solid fa-book-open"></i> Studi Kasus Cerita</span>
+                        <p id="g5-story-text" class="text-slate-800 text-base leading-relaxed font-medium">
+                            Memuat skenario cerita...
+                        </p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <label class="block text-xs font-bold text-slate-500 uppercase">Tindakan Logis Terbaik:</label>
+                        <div id="g5-choices" class="space-y-2"></div>
+                    </div>
+
+                    <div id="g5-discussion" class="hidden p-4 rounded-xl bg-slate-50 border text-xs text-slate-700 space-y-1"></div>
+
+                    <div class="text-right">
+                        <button onclick="nextG5Scenario()" id="btn-g5-next" class="hidden bg-rose-700 text-white font-bold px-5 py-2.5 rounded-xl hover:bg-rose-800">
+                            Skenario Berikutnya <i class="fa-solid fa-chevron-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 9: ASESMEN AKHIR ==================== -->
+        <section id="sec-asesmen" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6">
+                <!-- Assessment Header -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b pb-4">
+                    <div>
+                        <span class="text-xs font-bold text-emerald-600 uppercase">Evaluasi Akhir Pembelajaran</span>
+                        <h2 class="text-2xl font-extrabold text-slate-800">Asesmen Kognitif Detektif Sujud</h2>
+                        <p class="text-xs text-slate-500">15 Soal Acak dari Bank Soal Internal • Sistem Nilai 0–100</p>
+                    </div>
+                    <button onclick="startAssessment()" id="btn-start-assess" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-6 py-3 rounded-2xl shadow transition">
+                        <i class="fa-solid fa-pen-to-square mr-1"></i> Mulai Ujian Asesmen
+                    </button>
+                </div>
+
+                <!-- Assessment Active Area -->
+                <div id="assess-active-area" class="hidden space-y-6">
+                    <div class="flex justify-between items-center text-xs font-bold text-slate-500">
+                        <span>Nomor Soal: <span id="assess-q-index" class="text-emerald-700 text-base">1</span> / 15</span>
+                        <span id="assess-cat-tag" class="bg-slate-100 px-3 py-1 rounded-full text-slate-700">Kategori</span>
+                    </div>
+
+                    <div id="assess-question-body" class="text-lg font-bold text-slate-800 bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        Pertanyaan Asesmen...
+                    </div>
+
+                    <div id="assess-options-container" class="space-y-3">
+                        <!-- Options radio buttons -->
+                    </div>
+
+                    <div class="flex justify-between items-center pt-4 border-t">
+                        <button onclick="prevAssessQ()" id="btn-assess-prev" class="bg-slate-100 text-slate-700 font-bold px-4 py-2.5 rounded-xl disabled:opacity-40">
+                            <i class="fa-solid fa-chevron-left mr-1"></i> Sebelumnya
+                        </button>
+                        <button onclick="nextAssessQ()" id="btn-assess-next" class="bg-emerald-700 text-white font-bold px-6 py-2.5 rounded-xl hover:bg-emerald-800">
+                            Berikutnya <i class="fa-solid fa-chevron-right ml-1"></i>
+                        </button>
+                        <button onclick="submitAssessment()" id="btn-assess-finish" class="hidden bg-amber-500 text-emerald-950 font-black px-6 py-2.5 rounded-xl hover:bg-amber-400 shadow">
+                            <i class="fa-solid fa-paper-plane mr-1"></i> Selesaikan Ujian
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Assessment Result Score Screen -->
+                <div id="assess-result-screen" class="hidden space-y-6 py-4">
+                    <div class="bg-gradient-to-br from-emerald-900 to-teal-900 text-white rounded-3xl p-8 text-center space-y-4 shadow-xl">
+                        <h3 class="text-xl font-bold text-emerald-200">Rapor Hasil Asesmen Akhir</h3>
+                        <div class="text-6xl font-black text-amber-300 tracking-tight" id="assess-final-score-val">
+                            0
+                        </div>
+                        <div id="assess-grade-badge" class="inline-block bg-amber-400 text-emerald-950 font-extrabold px-4 py-1.5 rounded-full text-sm">
+                            Kategori Predikat
+                        </div>
+                        <p id="assess-grade-msg" class="text-xs text-emerald-100 max-w-md mx-auto"></p>
+                    </div>
+
+                    <!-- Question Breakdown List -->
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-slate-800 text-base">Pembahasan & Detail Jawaban Kamu:</h4>
+                        <div id="assess-breakdown-list" class="space-y-3 text-xs">
+                            <!-- Dynamic Breakdown -->
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3 justify-center pt-4">
+                        <button onclick="startAssessment()" class="bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl hover:bg-emerald-800">
+                            <i class="fa-solid fa-rotate-right mr-1"></i> Ulangi Asesmen
+                        </button>
+                        <button onclick="switchTab('materi')" class="bg-slate-100 text-slate-700 font-bold px-6 py-3 rounded-xl hover:bg-slate-200">
+                            Kembali ke Materi
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 10: REFLEKSI ==================== -->
+        <section id="sec-refleksi" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6 max-w-3xl mx-auto">
+                <div class="border-b pb-4">
+                    <span class="text-xs font-bold text-emerald-600 uppercase">Jurnal Diri</span>
+                    <h2 class="text-2xl font-bold text-slate-800">Refleksi Belajar Detektif</h2>
+                    <p class="text-xs text-slate-500">Ungkapkan pengalaman dan pemahamanmu setelah menyelesaikan seluruh aktivitas pembelajaran!</p>
+                </div>
+
+                <form id="form-refleksi" onsubmit="saveReflection(event)" class="space-y-5 text-sm">
+                    <div class="space-y-2">
+                        <label class="block font-bold text-slate-800">1. Apa perbedaan paling utama yang paling kamu ingat antara Sujud Syukur, Sahwi, dan Tilawah?</label>
+                        <textarea id="refl-q1" required rows="3" placeholder="Tuliskan pemahamanmu di sini..." class="w-full p-3 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-none"></textarea>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block font-bold text-slate-800">2. Dari ketiga jenis sujud, mana yang menurutmu paling mudah dianalisis kasusnya?</label>
+                        <select id="refl-q2" class="w-full p-3 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                            <option value="Sujud Syukur">Sujud Syukur (Karena respon nikmat/bencana)</option>
+                            <option value="Sujud Sahwi">Sujud Sahwi (Karena kekeliruan dalam salat)</option>
+                            <option value="Sujud Tilawah">Sujud Tilawah (Karena adanya Ayat Sajdah)</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block font-bold text-slate-800">3. Mengapa kita perlu bersikap teliti dalam menganalisis sebab sujud sebelum mengambil keputusan?</label>
+                        <textarea id="refl-q3" required rows="3" placeholder="Tuliskan pandanganmu..." class="w-full p-3 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3.5 rounded-xl shadow transition">
+                        <i class="fa-solid fa-floppy-disk mr-1"></i> Simpan Catatan Refleksi
+                    </button>
+                </form>
+
+                <div id="refl-success-msg" class="hidden p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs text-center font-bold">
+                    <i class="fa-solid fa-circle-check mr-1"></i> Catatan refleksi berhasil disimpan di perangkatmu!
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 11: PUSAT GURU / PANDUAN PJJ ==================== -->
+        <section id="sec-guru" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6">
+                <!-- Teacher Header -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b pb-4">
+                    <div>
+                        <span class="bg-amber-400 text-emerald-950 text-xs font-bold px-3 py-1 rounded-full"><i class="fa-solid fa-lock"></i> Mode Pendidik</span>
+                        <h2 class="text-2xl font-extrabold text-slate-800 mt-1">Pusat Guru & Panduan PJJ Kabut Asap</h2>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="togglePresentationMode()" class="bg-emerald-800 text-white text-xs font-bold px-3 py-2 rounded-xl hover:bg-emerald-700">
+                            <i class="fa-solid fa-desktop mr-1"></i> Mode Presentasi Proyektor
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PJJ Implementation Steps (40-80 Min) -->
+                <div class="space-y-4">
+                    <h3 class="font-bold text-slate-800 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-clock text-amber-500"></i> Panduan Pembelajaran Jarak Jauh (PJJ 40–80 Menit)
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                            <span class="font-bold text-emerald-700">1. Pendahuluan & Pemantik (10 Menit)</span>
+                            <p class="text-slate-600">Guru membuka sesi synchronous (Google Meet/WA Group), menyampaikan tujuan ATP 7.1.1, serta memberikan apersepsi kasus mendadak (misal: "Apa yang kamu lakukan jika mendengar kabar sekolah libur karena asap?"). Siswa mengisi identitas nama di aplikasi.</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                            <span class="font-bold text-emerald-700">2. Eksplorasi Mandiri (20 Menit)</span>
+                            <p class="text-slate-600">Siswa secara mandiri atau berpasangan membuka <strong>Zona Materi</strong> dan memecahkan setidaknya 5 kasus di <strong>Laboratorium Kasus</strong> melalui HP/Laptop masing-masing saat belajar di rumah.</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                            <span class="font-bold text-emerald-700">3. Tantangan Logika Flowchart (20 Menit)</span>
+                            <p class="text-slate-600">Siswa memainkan <strong>Game #4 Susun Flowchart</strong> untuk melatih kognitif numerasi berpikir terstruktur "Jika-Maka" dalam fikih ibadah.</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                            <span class="font-bold text-emerald-700">4. Asesmen & Refleksi (20–30 Menit)</span>
+                            <p class="text-slate-600">Siswa mengerjakan 15 soal Asesmen Akhir secara otomatis dan mengisi Refleksi Diri. Guru memantau kendala jaringan (asinkron: hasil dapat discreenshot dan dikirim ke guru).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bank Soal Internal Inspector -->
+                <div class="space-y-4 border-t pt-6">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-slate-800 text-base"><i class="fa-solid fa-database text-emerald-600 mr-1"></i> Bank Soal Internal (40 Pertanyaan Fiqh)</h3>
+                        <span class="text-xs bg-slate-100 text-slate-600 font-semibold px-2.5 py-1 rounded-lg">Total: 40 Soal Terstruktur</span>
+                    </div>
+                    <div class="max-h-80 overflow-y-auto border border-slate-200 rounded-2xl p-4 bg-slate-50 space-y-3" id="teacher-qbank-list">
+                        <!-- Dynamic Question Bank Items -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-emerald-950 text-emerald-300 py-6 border-t border-emerald-800/80 text-xs mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+            <p class="font-semibold text-emerald-100">MISI DETEKTIF SUJUD • Media Pembelajaran Interaktif PAI Kelas VII SMP</p>
+            <p class="text-emerald-400/80">Sesuai Capaian Pembelajaran Kurikulum Merdeka • Dirancang untuk Moda PJJ & Tatap Muka</p>
+        </div>
+    </footer>
+
+    <script>
+        const state = {
+            studentName: "Detektif Anonim",
+            currentTab: "beranda",
+            labCurrentIndex: 0,
+            labCompleted: 0,
+            g1CurrentIndex: 0,
+            g1Score: 0,
+            g2Matched: 0,
+            g2SelectedLeft: null,
+            g3CurrentIndex: 0,
+            g3Score: 0,
+            g5CurrentIndex: 0,
+            flowchartUserSteps: [],
+            assessActiveQuestions: [],
+            assessUserAnswers: {},
+            assessCurrentIndex: 0
+        };
+
+        const QUESTION_BANK = [
+            // 1-10: Konsep dasar
+            { id: 1, cat: "Konsep", diff: "Mudah", q: "Sujud yang dilakukan sebagai bentuk ungkapan terima kasih kepada Allah SWT atas nikmat yang melimpah disebut...", ops: ["Sujud Sahwi", "Sujud Syukur", "Sujud Tilawah", "Sujud Rukun"], key: 1, exp: "Sujud Syukur khusus dilakukan saat menerima nikmat mendadak atau terhindar dari musibah.", comp: "Menjelaskan pengertian sujud syukur" },
+            { id: 2, cat: "Konsep", diff: "Mudah", q: "Sujud Sahwi dilakukan sebanyak berapa kali sujud?", ops: ["1 kali", "2 kali", "3 kali", "4 kali"], key: 1, exp: "Sujud Sahwi dikerjakan sebanyak 2 kali sujud di akhir salat.", comp: "Menyebutkan jumlah sujud sahwi" },
+            { id: 3, cat: "Konsep", diff: "Mudah", q: "Apabila seseorang membaca ayat sajdah di dalam Al-Qur'an, disyariatkan melakukan sujud...", ops: ["Sujud Tilawah", "Sujud Sahwi", "Sujud Syukur", "Sujud Rukun"], key: 0, exp: "Sujud Tilawah dilakukan saat membaca atau mendengar ayat sajdah.", comp: "Menjelaskan sujud tilawah" },
+            { id: 4, cat: "Konsep", diff: "Sedang", q: "Berikut yang BUKAN merupakan sebab dilaksanakannya sujud syukur adalah...", ops: ["Terhindar dari bencana alam", "Mendapat berita kelulusan", "Lupa jumlah rakaat salat", "Mendapat hadiah kejutan"], key: 2, exp: "Lupa jumlah rakaat salat adalah sebab sujud sahwi, bukan sujud syukur.", comp: "Membedakan sebab sujud" },
+            { id: 5, cat: "Konsep", diff: "Mudah", q: "Hukum dasar melaksanakan sujud syukur, sujud sahwi, dan sujud tilawah adalah...", ops: ["Wajib 'ain", "Sunnah", "Makruh", "Haram"], key: 1, exp: "Ketiga sujud tersebut hukum dasarnya adalah Sunnah.", comp: "Menjelaskan hukum sujud" },
+            { id: 6, cat: "Konsep", diff: "Sedang", q: "Tanda khusus di dalam Al-Qur'an yang menunjukkan ayat sajdah adalah...", ops: ["Simbol Kubah / Tulisan Sajdah", "Tanda Waqaf Lazim", "Tanda Tajwid", "Garis tebal pada huruf mad"], key: 0, exp: "Ayat sajdah ditandai dengan ikon kubah kecil atau tulisan sajdah di pinggir Al-Qur'an.", comp: "Mengenali ciri ayat sajdah" },
+            { id: 7, cat: "Konsep", diff: "Sedang", q: "Sujud Sahwi umumnya dilaksanakan pada waktu...", ops: ["Di pertengahan surah", "Sebelum atau sesudah salam", "Saat sujud pertama rakaat satu", "Setelah wudhu"], key: 1, exp: "Sujud Sahwi dilakukan di akhir salat sebelum salam (atau sesudah salam pada kasus tertentu).", comp: "Memahami waktu sujud sahwi" },
+            { id: 8, cat: "Konsep", diff: "Mudah", q: "Jumlah sujud yang dilakukan pada Sujud Tilawah adalah...", ops: ["1 kali", "2 kali", "3 kali", "4 kali"], key: 0, exp: "Sujud Tilawah dilakukan sebanyak 1 kali sujud saja.", comp: "Mengetahui jumlah sujud tilawah" },
+            { id: 9, cat: "Konsep", diff: "Sedang", q: "Berdasarkan mayoritas ulama (Mazhab Syafi'i), sujud syukur dilakukan dalam keadaan...", ops: ["Boleh tanpa wudhu dalam kondisi apapun", "Suci dari hadas, menutup aurat, dan menghadap kiblat", "Sambil berjalan", "Tanpa takbir"], key: 1, exp: "Sujud syukur menyyaratkan suci dari hadas dan menghadap kiblat.", comp: "Memahami syarat sujud syukur" },
+            { id: 10, cat: "Konsep", diff: "Mudah", q: "Lupa mengerjakan Tasyahhud Awwal dalam salat Dzuhur merupakan sebab disyariatkannya...", ops: ["Sujud Tilawah", "Sujud Sahwi", "Sujud Syukur", "Salat ulang"], key: 1, exp: "Meninggalkan sunnah ab'adh seperti tasyahhud awwal diganti dengan sujud sahwi.", comp: "Menganalisis sebab sujud sahwi" },
+
+            // 11-20: Analisis Kasus
+            { id: 11, cat: "Analisis", diff: "Sedang", q: "Rani terhindar dari tabrakan motor secara ajaib di jalan raya. Tindakan ibadah di luar salat yang paling tepat dilakukan Rani adalah...", ops: ["Sujud Syukur", "Sujud Sahwi", "Sujud Tilawah", "Sujud Rukun"], key: 0, exp: "Terhindar dari musibah berbahaya merupakan sebab utama sujud syukur.", comp: "Menganalisis kasus keselamatan" },
+            { id: 12, cat: "Analisis", diff: "Sedang", q: "Ustadz Hanafi membaca Surah Al-A'raf ayat 206 dalam salat Maghrib. Jamaah di belakangnya bersiap melakukan sujud...", ops: ["Sujud Syukur", "Sujud Tilawah", "Sujud Sahwi", "Sujud Janazah"], key: 1, exp: "Surah Al-A'raf ayat 206 mengandung ayat sajdah, maka disyariatkan sujud tilawah.", comp: "Menganalisis bacaan ayat sajdah" },
+            { id: 13, cat: "Analisis", diff: "Sangat Sulit", q: "Dhani ragu apakah ia baru rakaat ke-3 atau ke-4 saat salat Asyar. Apa yang harus ia lakukan?", ops: ["Langsung salam", "Membatalkan salat", "Mengambil rakaat terkecil (3), menambah 1 rakaat, lalu sujud sahwi sebelum salam", "Menebak 4 rakaat lalu sujud syukur"], key: 2, exp: "Sesuai petunjuk Nabi SAW, jika ragu rakaat, buang keraguan dan ambil yang terdefinisi terkecil, lalu lakukan sujud sahwi.", comp: "Menganalisis keraguan rakaat" },
+            { id: 14, cat: "Analisis", diff: "Sedang", q: "Aisyah mendengarkan lantunan Al-Qur'an dari HP dan melewati ayat sajdah. Tindakan yang dianjurkan bagi Aisyah adalah...", ops: ["Sujud Sahwi 2 kali", "Sujud Tilawah 1 kali", "Sujud Syukur 1 kali", "Mematikan HP"], key: 1, exp: "Mendengar ayat sajdah menganjurkan sujud tilawah 1 kali.", comp: "Menganalisis pendengar ayat sajdah" },
+            { id: 15, cat: "Analisis", diff: "Sangat Sulit", q: "Fikri sengaja melakukan sujud syukur di dalam rakaat kedua salat Subuh. Bagaimana status salat Fikri?", ops: ["Sah", "Batal karena menambah gerakan sujud yang dilarang dalam salat", "Mendapat pahala berganda", "Harus diimbangi sujud sahwi"], key: 1, exp: "Sujud syukur HARAM dilakukan di dalam salat fardhu dan membatalkan salat jika disengaja.", comp: "Menganalisis larangan sujud syukur" },
+            { id: 16, cat: "Analisis", diff: "Sedang", q: "Ibu mendapat kabar bahwa hasil tes kesehatan menunjukkan bebas dari penyakit berat. Ibu berdiri menghadap kiblat lalu sujud 1 kali. Sujud tersebut adalah...", ops: ["Sujud Tilawah", "Sujud Syukur", "Sujud Sahwi", "Sujud Sunnah Biasa"], key: 1, exp: "Bentuk respon atas berita kabar baik bebas penyakit adalah sujud syukur.", comp: "Menganalisis fenomena berita gembira" },
+            { id: 17, cat: "Analisis", diff: "Sedang", q: "Pak Imam lupa tidak membaca Doa Qunut pada salat Subuh (dalam tradisi Mazhab Syafi'i). Sebelum salam beliau melakukan...", ops: ["Sujud Sahwi 2 kali", "Sujud Syukur 1 kali", "Sujud Tilawah", "Mengulang salat Subuh"], key: 0, exp: "Doa qunut tergolong Sunnah Ab'adh yang disyariatkan sujud sahwi jika terlewat.", comp: "Menganalisis sunnah ab'adh" },
+            { id: 18, cat: "Analisis", diff: "Sedang", q: "Saat tadarus Al-Qur'an di kelas, Budi membaca Surah Maryam ayat 58 (ayat sajdah). Budi dan teman-temannya langsung bertakbir dan sujud. Sujud itu dinamakan...", ops: ["Sujud Sahwi", "Sujud Tilawah", "Sujud Syukur", "Sujud Tilawah & Syukur"], key: 1, exp: "Membaca surah Maryam ayat 58 memicu sujud tilawah.", comp: "Menganalisis kegiatan tadarus" },
+            { id: 19, cat: "Analisis", diff: "Sangat Sulit", q: "Seorang makmum tertinggal 1 rakaat. Ketika imam melakukan Sujud Sahwi sebelum salam, apa yang harus dilakukan makmum muwafiq/masbuq?", ops: ["Tetip ikut sujud sahwi bersama imam, lalu bangkit menambah rakaat yang kurang", "Langsung berdiri", "Keluar dari jamaah", "Sujud syukur sendiri"], key: 0, exp: "Makmum wajib mengikuti imam dalam sujud sahwi, lalu bangkit menyempurnakan rakaat tersisa.", comp: "Menganalisis makmum masbuq" },
+            { id: 20, cat: "Analisis", diff: "Sedang", q: "Keluarga Pak Imran mendapat kabar rumahnya selamat dari kebakaran hebat di kampungnya. Mereka sujud bersama. Ini adalah...", ops: ["Sujud Sahwi", "Sujud Syukur", "Sujud Tilawah", "Salat Sunnah Khusuf"], key: 1, exp: "Penyelamatan dari bencana kampung memicu sujud syukur.", comp: "Menganalisis keselamatan bencana" },
+
+            // 21-30: Tata Cara & Bacaan
+            { id: 21, cat: "Tata Cara", diff: "Sedang", q: "Bacaan 'Subhana man laa yanaamu wa laa yashu' secara khusus dibaca pada saat...", ops: ["Sujud Tilawah", "Sujud Sahwi", "Sujud Syukur", "Sujud Rukun Salat"], key: 1, exp: "Lafal tersebut berarti 'Maha Suci Dzat yang tidak tidur dan tidak lupa', dibaca saat Sujud Sahwi.", comp: "Mengenali bacaan sujud sahwi" },
+            { id: 22, cat: "Tata Cara", diff: "Sedang", q: "Lafal 'Sajada wajhiya lilladzi khalaqahu wa shawwarahu...' merupakan bacaan yang lazim dibaca saat...", ops: ["Sujud Sahwi", "Sujud Syukur & Tilawah", "Sujud Ruku", "Doa Iftitah"], key: 1, exp: "Doa tersebut dibaca pada sujud syukur maupun sujud tilawah.", comp: "Mengenali bacaan sujud syukur/tilawah" },
+            { id: 23, cat: "Tata Cara", diff: "Sedang", q: "Urutan tata cara Sujud Syukur di luar salat yang benar adalah...", ops: ["Niat -> Takbir -> Sujud 1x -> Sit/Salam", "Sujud 2x -> Salam", "Salam -> Sujud -> Niat", "Takbir -> Sujud 3x"], key: 0, exp: "Sujud syukur diawali niat & takbir, sujud 1 kali, duduk sejenak lalu salam.", comp: "Memahami urutan sujud syukur" },
+            { id: 24, cat: "Tata Cara", diff: "Sedang", q: "Sujud Tilawah yang dilakukan DI DALAM salat dikerjakan dengan tata cara...", ops: ["Langsung takbir dan sujud 1x dari posisi berdiri, lalu bangkit berdiri lagi", "Harus menunggu salat selesai baru sujud", "Sujud 2x setelah ruku'", "Salam dulu baru sujud"], key: 0, exp: "Dalam salat, imam/munfarid langsung takbir turun sujud 1 kali saat ayat sajdah dibaca, lalu berdiri kembali.", comp: "Memahami sujud tilawah dalam salat" },
+            { id: 25, cat: "Tata Cara", diff: "Mudah", q: "Apakah Sujud Sahwi memerlukan Salam setelahnya?", ops: ["Ya, diakhiri dengan salam", "Tidak perlu salam", "Hanya jika ingat saja", "Tergantung keputusan imam"], key: 0, exp: "Karena sujud sahwi bagian dari salat, salat tetap ditutup dengan salam.", comp: "Memahami salam sujud sahwi" },
+            { id: 26, cat: "Tata Cara", diff: "Sedang", q: "Berapa kali takbir yang diucapkan saat melakukan Sujud Syukur?", ops: ["1 kali saat mau sujud dan 1 kali saat bangun", "5 kali takbir", "Tidak ada takbir", "3 kali takbir"], key: 0, exp: "Takbiratul ihram/turun sujud dan takbir saat bangkit dari sujud.", comp: "Memahami takbir sujud syukur" },
+            { id: 27, cat: "Tata Cara", diff: "Sedang", q: "Apakah dianjurkan membaca Tasyahhud akhir lagi setelah Sujud Sahwi sebelum salam?", ops: ["Tidak perlu, langsung salam setelah sujud kedua", "Wajib tasyahhud ulang", "Boleh tasyahhud 3 kali", "Membaca Al-Fatihah"], key: 0, exp: "Setelah sujud sahwi kedua, langsung diakhiri dengan salam tanpa membaca tasyahhud ulang.", comp: "Memahami ketentuan tasyahhud sujud sahwi" },
+            { id: 28, cat: "Tata Cara", diff: "Mudah", q: "Di mana sebaiknya sujud syukur dilakukan ketika mendengar kabar bahagia di rumah?", ops: ["Di tempat yang suci dan bersih", "Di jalan raya", "Di kamar mandi", "Di tempat kotor"], key: 0, exp: "Sujud syukur dilakukan di tempat bersih yang suci dari najis.", comp: "Memahami tempat sujud" },
+            { id: 29, cat: "Tata Cara", diff: "Sedang", q: "Hukum membaca Doa Sujud Tilawah saat sujud adalah...", ops: ["Sunnah", "Wajib 'ain", "Haram", "Makruh"], key: 0, exp: "Membaca doa sujud tilawah hukumnya sunnah disempurnakan.", comp: "Memahami hukum doa sujud" },
+            { id: 30, cat: "Tata Cara", diff: "Sedang", q: "Apabila seseorang lupa melakukan sujud sahwi dan sudah terlanjur salam serta beranjak jauh, maka salatnya...", ops: ["Tetap sah dan tidak perlu diulang", "Batal total", "Harus diulang dari wudhu", "Dosa besar"], key: 0, exp: "Sujud sahwi hukumnya sunnah, jika terlanjur lupa dan jeda waktu sudah lama, salat tetap sah.", comp: "Memahami kelupaan sujud sahwi" },
+
+            // 31-40: Logika Flowchart & Fikih Numerasi
+            { id: 31, cat: "Logika", diff: "Sedang", q: "Dalam flowchart logika keputusan sujud: Jika kondisi = 'Lupa Tasyahhud Awwal dalam Salat', maka jenis sujud yang dihasilkan adalah...", ops: ["Sujud Sahwi", "Sujud Syukur", "Sujud Tilawah", "Tidak Perlu Sujud"], key: 0, exp: "Lupa tasyahhud awwal secara langsung memicu jalur keputusan Sujud Sahwi.", comp: "Menganalisis alur logika sahwi" },
+            { id: 32, cat: "Logika", diff: "Sedang", q: "Dalam flowchart logika keputusan: Jika kondisi = 'Mendengar Ayat Sajdah', Maka jenis sujud = ...", ops: ["Sujud Tilawah", "Sujud Sahwi", "Sujud Syukur", "Perlu Informasi Tambahan"], key: 0, exp: "Ayat sajdah secara langsung mengarah pada Sujud Tilawah.", comp: "Menganalisis alur logika tilawah" },
+            { id: 33, cat: "Logika", diff: "Sangat Sulit", q: "Perhatikan urutan: [MULAI] -> [Terjadi Lupa Salat?] -> YA -> [Apakah yang terlewat Sunnah Ab'adh / Ragu Rakaat?] -> YA -> [Decision X]. X adalah...", ops: ["Lakukan Sujud Sahwi 2x", "Lakukan Sujud Syukur 1x", "Lakukan Sujud Tilawah 1x", "Membatalkan Salat"], key: 0, exp: "Cabang logika tersebut bermuara pada perintah melakukan Sujud Sahwi 2 kali.", comp: "Menyusun percabangan logika sahwi" },
+            { id: 34, cat: "Logika", diff: "Sedang", q: "Suatu kejadian membutuhkan 'INFORMASI TAMBAHAN' dalam flowchart apabila...", ops: ["Informasi mengenai status wudhu atau detail kejadian belum jelas", "Sudah pasti ayat sajdah", "Sudah pasti lulus ujian", "Sudah pasti lupa rakaat"], key: 0, exp: "Jika narasi kasus belum lengkap/ambigu, keputusan logika memerlukan klarifikasi informasi tambahan.", comp: "Menganalisis kebutuhan informasi tambahan" },
+            { id: 35, cat: "Logika", diff: "Sedang", q: "Berapakah total jumlah sujud yang dilakukan jika seseorang dalam 1 hari melakukan: 1x Sujud Syukur + 1x Sujud Sahwi (sesi) + 1x Sujud Tilawah?", ops: ["4 kali sujud", "3 kali sujud", "2 kali sujud", "5 kali sujud"], key: 0, exp: "Sujud Syukur (1x) + Sujud Sahwi (2x sujud) + Sujud Tilawah (1x) = 1 + 2 + 1 = 4 kali sujud.", comp: "Menghitung numerasi jumlah sujud" },
+            { id: 36, cat: "Logika", diff: "Sedang", q: "Ahmad melakukan Sujud Sahwi (2x sujud) dan Sujud Tilawah (1x sujud). Berapa selisih jumlah sujud antara Sahwi dan Tilawah?", ops: ["1 kali sujud", "2 kali sujud", "0 kali sujud", "3 kali sujud"], key: 0, exp: "Sahwi (2x) - Tilawah (1x) = 1 kali sujud.", comp: "Menghitung selisih numerasi sujud" },
+            { id: 37, cat: "Logika", diff: "Sangat Sulit", q: "Jika P = Sujud Syukur, Q = Sujud Sahwi, R = Sujud Tilawah. Manakah pernyataan himpunan kondisi yang BENAR?", ops: ["Q terjadi di DALAM salat, P terjadi di LUAR salat", "P terjadi di dalam salat", "Q terjadi saat baca Al-Qur'an", "R terjadi saat dapat beasiswa"], key: 0, exp: "Sujud Sahwi (Q) khusus terkait internal ibadah salat, sedangkan Sujud Syukur (P) di luar salat.", comp: "Menganalisis himpunan tempat sujud" },
+            { id: 38, cat: "Logika", diff: "Sedang", q: "Dalam algoritma keputusan: 'JIKA membaca Al-Qur'an DAN bertemu tanda kubah sajdah MAKA...'", ops: ["Disunnahkan Sujud Tilawah 1x", "Wajib Sujud Sahwi 2x", "Wajib Sujud Syukur", "Harus berhenti membaca"], key: 0, exp: "Kombinasi kondisi membaca Qur'an & tanda kubah menghasilkan Sujud Tilawah.", comp: "Menerapkan logika Boolean AND" },
+            { id: 39, cat: "Logika", diff: "Sedang", q: "Logika yang SALAH dalam penentuan sujud adalah...", ops: ["Setiap lupa dalam hidup otomatis sujud sahwi", "Sujud syukur dilakukan atas nikmat/bebas bencana", "Sujud tilawah berkaitan dengan ayat sajdah", "Sujud sahwi berjumlah 2 kali"], key: 0, exp: "Lupa dalam kehidupan sehari-hari (misal lupa menaruh kunci) TIDAK memicu sujud sahwi. Sahwi khusus untuk salat.", comp: "Mendeteksi kesesatan logika" },
+            { id: 40, cat: "Logika", diff: "Sangat Sulit", q: "Seseorang salat Subuh, lupa qunut, membaca ayat sajdah, lalu sujud tilawah. Di akhir salat ia sujud sahwi. Berapa total sujud ekstra di luar rukun salat standar?", ops: ["3 kali sujud (1 tilawah + 2 sahwi)", "2 kali sujud", "1 kali sujud", "4 kali sujud"], key: 0, exp: "Sujud tilawah (1x) + sujud sahwi (2x) = 3 kali sujud ekstra.", comp: "Menganalisis kombinasi numerasi sujud" }
+        ];
+
+        const LAB_CASES = [
+            { id: 1, title: "#K-01: Kabar Beasiswa", text: "Budi menerima amplop surat pengumuman. Setelah dibuka, ia dinyatakan mendapatkan Beasiswa Pendidikan Prestasi Tingkat Nasional.", ops: ["Sujud Syukur", "Sujud Sahwi", "Sujud Tilawah", "Perlu Informasi Tambahan"], key: 0, reason: "Mendapat berita kebahagiaan luar biasa (beasiswa) disyariatkan Sujud Syukur 1 kali.", concept: "Sujud Syukur = Ungkapan nikmat gembira." },
+            { id: 2, title: "#K-02: Ragu Rakaat Salat", text: "Saat salat Isya, Syifa bingung apakah ia sedang berada di rakaat ke-3 atau rakaat ke-4.", ops: ["Sujud Syukur", "Sujud Sahwi", "Sujud Tilawah", "Perlu Informasi Tambahan"], key: 1, reason: "Keraguan jumlah rakaat diselesaikan dengan menetapkan jumlah terkecil lalu Sujud Sahwi 2x sebelum salam.", concept: "Sujud Sahwi = Penambal keraguan rakaat salat." },
+            { id: 3, title: "#K-03: Ayat Sajdah Dalam Tadarus", text: "Siti sedang membaca Al-Qur'an Surah Al-Inshiqaq dan menemukan simbol kubah kecil sajdah pada ayat 21.", ops: ["Sujud Syukur", "Sujud Sahwi", "Sujud Tilawah", "Perlu Informasi Tambahan"], key: 2, reason: "Membaca ayat sajdah memicu kesunnahkan Sujud Tilawah 1 kali.", concept: "Sujud Tilawah = Merespon ayat sajdah." },
+            { id: 4, title: "#K-04: Kebakaran Hutan", text: "Kampung tempat tinggal Farhan selamat dari kobaran api kabut asap yang membakar desa tetangga.", ops: ["Sujud Syukur", "Sujud Sahwi", "Sujud Tilawah", "Perlu Informasi Tambahan"], key: 0, reason: "Terhindar dari marabahaya/musibah besar adalah sebab Sujud Syukur.", concept: "Sujud Syukur = Terhindar dari bencana." },
+            { id: 5, title: "#K-05: Lupa Tasyahhud Awwal", text: "Imam salat Dzuhur langsung berdiri ke rakaat ketiga tanpa duduk Tasyahhud Awwal terlebih dahulu.", ops: ["Sujud Syukur", "Sujud Sahwi", "Sujud Tilawah", "Perlu Informasi Tambahan"], key: 1, reason: "Meninggalkan sunnah ab'adh (tasyahhud awwal) diganti dengan Sujud Sahwi sebelum salam.", concept: "Sujud Sahwi = Mengganti sunnah ab'adh." },
+            { id: 6, title: "#K-06: Suara Murottal di Masjid", text: "Fajar mendengar rekaman suara murottal Al-Qur'an dari speaker masjid saat ia berjalan di pasar.", ops: ["Sujud Syukur", "Sujud Sahwi", "Sujud Tilawah", "Perlu Informasi Tambahan"], key: 3, reason: "Membutuhkan informasi tambahan apakah suara tersebut merupakan ayat sajdah dan apakah Fajar dalam posisi memungkinkan sujud.", concept: "Analisis Ketelitian Kasus." },
+            { id: 7, title: "#K-07: Sembuh dari Sakit", text: "Setelah dirawat 2 minggu di rumah sakit akibat gangguan pernapasan asap, dokter menyatakan Doni sembuh total.", ops: ["Sujud Syukur", "Sujud Sahwi", "Sujud Tilawah", "Perlu Informasi Tambahan"], key: 0, reason: "Kesembuhan dari penyakit berat merupakan nikmat kesehatan yang memicu Sujud Syukur.", concept: "Sujud Syukur = Nikmat Kesehatan." },
+            { id: 8, title: "#K-08: Ketinggalan Qunut Subuh", text: "Dalam salat Subuh, Munir lupa tidak membaca doa qunut dan langsung meluncur ruku'/sujud.", ops: ["Sujud Syukur", "Sujud Sahwi", "Sujud Tilawah", "Perlu Informasi Tambahan"], key: 1, reason: "Menurut Mazhab Syafi'i, Doa Qunut tergolong sunnah ab'adh sehingga disunnahkan Sujud Sahwi.", concept: "Sujud Sahwi = Qunut Subuh." },
+            { id: 9, title: "#K-09: Surah Al-A'raf Ayat 206", text: "Guru PAI membacakan Surah Al-A'raf ayat 206 di depan kelas VII saat pembelajaran Al-Qur'an Hadis.", ops: ["Sujud Syukur", "Sujud Sahwi", "Sujud Tilawah", "Perlu Informasi Tambahan"], key: 2, reason: "Ayat 206 Surah Al-A'raf adalah salah satu ayat sajdah yang disunnahkan Sujud Tilawah.", concept: "Sujud Tilawah = Ayat Sajdah Al-A'raf." },
+            { id: 10, title: "#K-10: Seseorang Lupa Menaruh Dompet", text: "Rudi lupa di mana ia menaruh dompetnya saat berada di kantin sekolah.", ops: ["Sujud Syukur", "Sujud Sahwi", "Sujud Tilawah", "Perlu Informasi Tambahan"], key: 3, reason: "Lupa dalam urusan duniawi biasa BUKAN merupakan sebab sujud sahwi/agama apapun.", concept: "Tidak Ada Sujud untuk Lupa Duniawi." },
+            { id: 11, title: "#K-11: Lulus Ujian Sertifikasi", text: "Kakak Rina berhasil lulus ujian CPNS setelah berjuang belajar selama satu tahun.", ops: ["Sujud Syukur", "Sujud Sahwi", "Sujud Tilawah", "Perlu Informasi Tambahan"], key: 0, reason: "Pencapaian keberhasilan besar memicu rasa syukur dalam bentuk Sujud Syukur.", concept: "Sujud Syukur = Kelulusan." },
+            { id: 12, title: "#K-12: Kelebihan Rakaat Salat", text: "Pak Hasan tidak sengaja melakukan rakaat ke-5 saat melaksanakan salat Dzuhur.", ops: ["Sujud Syukur", "Sujud Sahwi", "Sujud Tilawah", "Perlu Informasi Tambahan"], key: 1, reason: "Kelebihan rakaat karena lupa diimbangi dengan Sujud Sahwi.", concept: "Sujud Sahwi = Kelebihan Rakaat." },
+            { id: 13, title: "#K-13: Menyimak Hafalan Teman", text: "Nisa menyimak hafalan Al-Qur'an temannya yang membacakan Surah Sajdah.", ops: ["Sujud Syukur", "Sujud Sahwi", "Sujud Tilawah", "Perlu Informasi Tambahan"], key: 2, reason: "Mendengar bacaan ayat sajdah dari orang lain menganjurkan Sujud Tilawah.", concept: "Sujud Tilawah = Menyimak Hafalan." },
+            { id: 14, title: "#K-14: Lupa Ruku' Langsung Sujud", text: "Lani dari posisi berdiri membaca surah langsung turun sujud tanpa ruku' terlebih dahulu.", ops: ["Sujud Syukur", "Sujud Sahwi", "Sujud Tilawah", "Perlu Informasi Tambahan"], key: 3, reason: "Ruku' adalah rukun salat. Lupa rukun harus diulangi rakaatnya baru kemudian Sujud Sahwi.", concept: "Lupa Rukun vs Sunnah Ab'adh." },
+            { id: 15, title: "#K-15: Selamat dari Gempa", text: "Gempa bumi mengguncang kota, namun rumah seluruh warga desa selamat tanpa kerusakan berarti.", ops: ["Sujud Syukur", "Sujud Sahwi", "Sujud Tilawah", "Perlu Informasi Tambahan"], key: 0, reason: "Terhindar dari bencana alam dahsyat disyariatkan Sujud Syukur.", concept: "Sujud Syukur = Selamat Bencana." }
+        ];
+
+        const GAME2_PAIRS = [
+            { id: 1, left: "Mendapat Beasiswa Pendidikan", right: "Sujud Syukur (1x Sujud)" },
+            { id: 2, left: "Lupa Tasyahhud Awwal dalam Salat", right: "Sujud Sahwi (2x Sujud)" },
+            { id: 3, left: "Membaca Ayat Sajdah di Al-Qur'an", right: "Sujud Tilawah (1x Sujud)" },
+            { id: 4, left: "Terhindar dari Musibah Kecelakaan", right: "Sujud Syukur (Di Luar Salat)" },
+            { id: 5, left: "Ragu Rakaat 3 atau 4 Saat Salat", right: "Sujud Sahwi (Sebelum Salam)" },
+            { id: 6, left: "Simbol Kubah di Pinggir Halaman", right: "Tanda Ayat Sajdah (Tilawah)" }
+        ];
+
+        const GAME3_STATEMENTS = [
+            { q: "Sujud Syukur boleh dilakukan di dalam rakaat salat fardhu.", ans: false, exp: "SALAH. Sujud syukur HARAM dilakukan di dalam salat fardhu dan membatalkan salat jika disengaja." },
+            { q: "Sujud Sahwi dilakukan sebanyak 2 kali sujud.", ans: true, exp: "BENAR. Tata cara sujud sahwi adalah sujud 2 kali di akhir salat." },
+            { q: "Sujud Tilawah hanya dapat dilakukan jika seseorang berada di luar salat.", ans: false, exp: "SALAH. Sujud tilawah dapat dikerjakan di luar maupun di dalam salat saat ayat sajdah dibaca." },
+            { q: "Doa 'Subhana man laa yanaamu wa laa yashu' dibaca saat Sujud Sahwi.", ans: true, exp: "BENAR. Lafal ini khusus dibaca pada sujud sahwi." },
+            { q: "Jumlah tempat ayat sajdah dalam Al-Qur'an ada sekitar 15 tempat.", ans: true, exp: "BENAR. Mayoritas ulama mencatat ada 15 ayat sajdah." },
+            { q: "Lupa menaruh HP di meja dapat diselesaikan dengan Sujud Sahwi.", ans: false, exp: "SALAH. Sujud sahwi hanya khusus untuk kelupaan dalam ibadah salat." },
+            { q: "Sujud Syukur diawali dengan niat dan takbiratul ihram.", ans: true, exp: "BENAR. Sesuai ketentuan Mazhab Syafi'i, sujud syukur diawali niat dan takbir." },
+            { q: "Meninggalkan Rukun Salat (seperti Ruku') cukup diganti dengan Sujud Sahwi tanpa mengulang rakaat.", ans: false, exp: "SALAH. Meninggalkan rukun WAJIB diulangi gerakan/rakaatnya, tidak cukup hanya sujud sahwi." },
+            { q: "Mendengar lantunan ayat sajdah disunnahkan untuk Sujud Tilawah.", ans: true, exp: "BENAR. Baik pembaca maupun pendengar disunnahkan sujud tilawah." },
+            { q: "Hukum dasar melaksanakan Sujud Syukur adalah Sunnah.", ans: true, exp: "BENAR. Hukumnya sunnah dan bernilai pahala." }
+        ];
+
+        const FLOWCHART_BLOCKS = [
+            { id: "b1", text: "1. [MULAI] Inisialisasi Kasus", type: "start" },
+            { id: "b2", text: "2. [KONDISI] Terkait Lupa / Kekeliruan Salat?", type: "cond" },
+            { id: "b3", text: "3. [JIKA YA] Sujud Sahwi (2x Sujud Sebelum Salam)", type: "act" },
+            { id: "b4", text: "4. [JIKA TIDAK] Terkait Membaca/Mendengar Ayat Sajdah?", type: "cond" },
+            { id: "b5", text: "5. [JIKA YA] Sujud Tilawah (1x Sujud)", type: "act" },
+            { id: "b6", text: "6. [JIKA TIDAK] Terkait Nikmat Besar / Bebas Bencana?", type: "cond" },
+            { id: "b7", text: "7. [JIKA YA] Sujud Syukur (1x Sujud di Luar Salat)", type: "act" },
+            { id: "b8", text: "8. [SELESAI] Keputusan Fiqh Ditetapkan", type: "end" }
+        ];
+
+        const GAME5_STORIES = [
+            {
+                story: "Skenario 1: Rafi sedang melaksanakan salat Subuh munfarid (sendirian). Pada rakaat kedua setelah ruku', ia langsung turun sujud tanpa membaca Doa Qunut. Saat duduk Tasyahhud Akhir, ia baru teringat bahwa ia belum membaca Qunut.",
+                choices: [
+                    "A. Langsung berdiri kembali membaca Qunut lalu sujud ulang.",
+                    "B. Tetap di posisi tasyahhud akhir, lakukan Sujud Sahwi 2 kali sebelum salam.",
+                    "C. Batalkan salat Subuh dan ulang dari wudhu.",
+                    "D. Lakukan sujud syukur setelah salam."
+                ],
+                key: 1,
+                disc: "Pembahasan: Qunut Subuh adalah sunnah ab'adh. Jika terlewat dan sudah sujud, tidak perlu berdiri lagi. Cukup lakukan Sujud Sahwi 2x sebelum salam."
+            },
+            {
+                story: "Skenario 2: Anisa membaca Surah Al-Sajdah di kamarnya saat belajar malam. Ketika sampai pada ayat 15, terdapat tanda kubah sajdah. Anisa dalam kondisi suci berwudhu dan menghadap kiblat.",
+                choices: [
+                    "A. Langsung takbir, sujud 1 kali membaca doa tilawah, lalu duduk dan salam.",
+                    "B. Melakukan sujud 2 kali seperti salat.",
+                    "C. Mengabaikannya karena tidak sedang salat.",
+                    "D. Mengerjakan sujud sahwi."
+                ],
+                key: 0,
+                disc: "Pembahasan: Saat membaca ayat sajdah di luar salat dalam keadaan suci, disunnahkan Sujud Tilawah 1 kali diawali takbir dan diakhiri salam."
+            },
+            {
+                story: "Skenario 3: Ayah mengabarkan bahwa tes PCR COVID/Kesehatan seluruh anggota keluarga hasilnya negatif dan semuanya sehat walafiat.",
+                choices: [
+                    "A. Mengerjakan Sujud Tilawah.",
+                    "B. Mengerjakan Sujud Sahwi.",
+                    "C. Segera menghadap kiblat dan melakukan Sujud Syukur 1 kali.",
+                    "D. Mengerjakan salat 4 rakaat."
+                ],
+                key: 2,
+                disc: "Pembahasan: Kabar gembira kesehatan keluarga adalah nikmat besar yang disunnahkan direspon dengan Sujud Syukur."
+            },
+            {
+                story: "Skenario 4: Rizky ragu saat rakaat salat Zhuhur, apakah ia sudah 3 rakaat atau 4 rakaat.",
+                choices: [
+                    "A. Memilih 4 rakaat dan langsung salam.",
+                    "B. Memilih 3 rakaat (meyakini yang sedikit), menambah 1 rakaat, lalu Sujud Sahwi sebelum salam.",
+                    "C. Membatalkan salat karena ragu.",
+                    "D. Sujud syukur 1 kali."
+                ],
+                key: 1,
+                disc: "Pembahasan: Kaidah fiqh: Buang keraguan dan ambil yang yakin (jumlah terkecil), genapi rakaatnya, lalu sujud sahwi."
+            },
+            {
+                story: "Skenario 5: Imam masjid membaca ayat sajdah dalam salat Jahriyah (Maghrib). Imam bertakbir lalu langsung turun sujud 1 kali. Sebagai makmum, apa tindakanmu?",
+                choices: [
+                    "A. Tetap berdiri bingung.",
+                    "B. Ikut turun sujud bersama imam untuk Sujud Tilawah, lalu bangkit berdiri lagi bersama imam.",
+                    "C. Langsung ruku'.",
+                    "D. Tegur imam dengan mengucap Subhanallah."
+                ],
+                key: 1,
+                disc: "Pembahasan: Makmum wajib mengikuti gerakan imam saat imam melakukan sujud tilawah di dalam salat."
+            }
+        ];
+
+        function switchTab(tabId) {
+            state.currentTab = tabId;
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('block'));
+            
+            const target = document.getElementById(`sec-${tabId}`);
+            if (target) {
+                target.classList.remove('hidden');
+                target.classList.add('block');
+            }
+
+            // Update Header Links
+            document.querySelectorAll('.nav-link').forEach(btn => btn.classList.remove('bg-emerald-700', 'text-amber-300'));
+            const activeNav = document.getElementById(`nav-${tabId}`);
+            if (activeNav) {
+                activeNav.classList.add('bg-emerald-700', 'text-amber-300');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Initialize Game Specific Loaders
+            if (tabId === 'lab-kasus') loadLabCase(state.labCurrentIndex);
+            if (tabId === 'game-tebak') loadG1Question(state.g1CurrentIndex);
+            if (tabId === 'game-pasang') initGame2();
+            if (tabId === 'game-tf') loadG3Statement(state.g3CurrentIndex);
+            if (tabId === 'game-flowchart') initFlowchart();
+            if (tabId === 'game-simulasi') loadG5Scenario(state.g5CurrentIndex);
+            if (tabId === 'guru') renderTeacherQBank();
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        function saveStudentName() {
+            const val = document.getElementById('input-student-name').value.trim();
+            if (val) {
+                state.studentName = val;
+                document.getElementById('badge-name').innerText = val;
+                document.getElementById('student-badge').classList.remove('hidden');
+                alert(`Nama Detektif diset sebagai: ${val}`);
+            }
+        }
+
+        function switchMateriTab(type) {
+            document.querySelectorAll('.materi-card').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active', 'bg-emerald-700', 'text-white'));
+            
+            document.getElementById(`materi-card-${type}`).classList.remove('hidden');
+            const btn = document.getElementById(`materi-tab-${type}`);
+            btn.classList.add('active');
+        }
+
+        function loadLabCase(index) {
+            const c = LAB_CASES[index];
+            document.getElementById('lab-case-number').innerText = index + 1;
+            document.getElementById('lab-case-id-badge').innerText = c.title.split(':')[0];
+            document.getElementById('lab-case-narrative').innerText = `"${c.text}"`;
+
+            const grid = document.getElementById('lab-options-grid');
+            grid.innerHTML = '';
+            c.ops.forEach((op, i) => {
+                grid.innerHTML += `
+                    <label class="flex items-center gap-3 p-3.5 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                        <input type="radio" name="lab-opt" value="${i}" class="w-4 h-4 text-emerald-600 focus:ring-emerald-500">
+                        <span class="text-sm font-semibold text-slate-800">${op}</span>
+                    </label>
+                `;
+            });
+
+            document.getElementById('lab-feedback-box').classList.add('hidden');
+            document.getElementById('btn-check-lab').classList.remove('hidden');
+            document.getElementById('btn-next-lab').classList.add('hidden');
+        }
+
+        function checkLabAnswer() {
+            const selected = document.querySelector('input[name="lab-opt"]:checked');
+            if (!selected) {
+                alert("Pilihlah salah satu jenis sujud terlebih dahulu!");
+                return;
+            }
+
+            const userVal = parseInt(selected.value);
+            const c = LAB_CASES[state.labCurrentIndex];
+            const isCorrect = (userVal === c.key);
+
+            const fbBox = document.getElementById('lab-feedback-box');
+            const fbTitle = document.getElementById('lab-feedback-title');
+            const fbReason = document.getElementById('lab-feedback-reason');
+            const fbConcept = document.getElementById('lab-feedback-concept');
+
+            fbBox.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'bg-rose-50', 'border-rose-200');
+
+            if (isCorrect) {
+                fbBox.classList.add('bg-emerald-50', 'border-emerald-200');
+                fbTitle.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i> <span class="text-emerald-900">Analisis Tepat! (Benar)</span>`;
+            } else {
+                fbBox.classList.add('bg-rose-50', 'border-rose-200');
+                fbTitle.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 text-xl"></i> <span class="text-rose-900">Analisis Belum Tepat</span>`;
+            }
+
+            fbReason.innerText = c.reason;
+            fbConcept.innerHTML = `<i class="fa-solid fa-lightbulb text-amber-500 mr-1"></i> <strong>Konsep Kunci:</strong> ${c.concept}`;
+
+            document.getElementById('btn-check-lab').classList.add('hidden');
+            document.getElementById('btn-next-lab').classList.remove('hidden');
+
+            state.labCompleted = Math.max(state.labCompleted, state.labCurrentIndex + 1);
+            updateDashboardStats();
+        }
+
+        function nextLabCase() {
+            if (state.labCurrentIndex < LAB_CASES.length - 1) {
+                state.labCurrentIndex++;
+                loadLabCase(state.labCurrentIndex);
+            } else {
+                alert("Selamat! Kamu telah menyelesaikan seluruh 15 Kasus Investigasi!");
+                switchTab('beranda');
+            }
+        }
+
+        function updateDashboardStats() {
+            document.getElementById('stat-kasus-count').innerText = `${state.labCompleted} / 15`;
+            const pct = Math.round((state.labCompleted / 15) * 100);
+            document.getElementById('stat-kasus-bar').style.width = `${pct}%`;
+        }
+
+        function loadG1Question(index) {
+            if (index >= 10) {
+                showG1Result();
+                return;
+            }
+            const q = QUESTION_BANK[index];
+            document.getElementById('g1-q-num').innerText = index + 1;
+            document.getElementById('g1-category-badge').innerText = q.cat;
+            document.getElementById('g1-question-text').innerText = q.q;
+
+            const optsDiv = document.getElementById('g1-options');
+            optsDiv.innerHTML = '';
+            q.ops.forEach((op, i) => {
+                optsDiv.innerHTML += `
+                    <button onclick="answerG1(${i})" class="g1-opt-btn w-full text-left p-3.5 rounded-xl border border-slate-200 hover:bg-emerald-50 text-sm font-semibold text-slate-800 transition">
+                        ${String.fromCharCode(65 + i)}. ${op}
+                    </button>
+                `;
+            });
+
+            document.getElementById('g1-explanation').classList.add('hidden');
+            document.getElementById('btn-g1-next').classList.add('hidden');
+        }
+
+        function answerG1(choice) {
+            const q = QUESTION_BANK[state.g1CurrentIndex];
+            const btns = document.querySelectorAll('.g1-opt-btn');
+            btns.forEach(b => b.disabled = true);
+
+            if (choice === q.key) {
+                btns[choice].classList.add('bg-emerald-600', 'text-white', 'border-emerald-600');
+                state.g1Score += 10;
+                document.getElementById('g1-score').innerText = state.g1Score;
+            } else {
+                btns[choice].classList.add('bg-rose-600', 'text-white', 'border-rose-600');
+                btns[q.key].classList.add('bg-emerald-100', 'text-emerald-900', 'border-emerald-400');
+            }
+
+            const exp = document.getElementById('g1-explanation');
+            exp.classList.remove('hidden');
+            exp.innerHTML = `<strong>Pembahasan:</strong> ${q.exp}`;
+
+            document.getElementById('btn-g1-next').classList.remove('hidden');
+        }
+
+        function nextG1Question() {
+            state.g1CurrentIndex++;
+            loadG1Question(state.g1CurrentIndex);
+        }
+
+        function showG1Result() {
+            document.getElementById('g1-container').classList.add('hidden');
+            document.getElementById('g1-result').classList.remove('hidden');
+            document.getElementById('g1-final-score').innerText = state.g1Score;
+        }
+
+        function resetG1() {
+            state.g1CurrentIndex = 0;
+            state.g1Score = 0;
+            document.getElementById('g1-score').innerText = 0;
+            document.getElementById('g1-container').classList.remove('hidden');
+            document.getElementById('g1-result').classList.add('hidden');
+            loadG1Question(0);
+        }
+
+        function initGame2() {
+            state.g2Matched = 0;
+            state.g2SelectedLeft = null;
+            document.getElementById('g2-matched-count').innerText = 0;
+            document.getElementById('g2-feedback-msg').innerText = "Klik kartu di sebelah kiri dulu!";
+
+            const lefts = [...GAME2_PAIRS].sort(() => Math.random() - 0.5);
+            const rights = [...GAME2_PAIRS].sort(() => Math.random() - 0.5);
+
+            const leftContainer = document.getElementById('g2-left-cards');
+            const rightContainer = document.getElementById('g2-right-cards');
+            leftContainer.innerHTML = '';
+            rightContainer.innerHTML = '';
+
+            lefts.forEach(item => {
+                leftContainer.innerHTML += `
+                    <button onclick="selectG2Left(${item.id}, this)" class="g2-left-btn w-full text-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-amber-50 text-xs font-bold text-slate-800 transition">
+                        ${item.left}
+                    </button>
+                `;
+            });
+
+            rights.forEach(item => {
+                rightContainer.innerHTML += `
+                    <button onclick="selectG2Right(${item.id}, this)" class="g2-right-btn w-full text-left p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-amber-50 text-xs font-bold text-slate-800 transition">
+                        ${item.right}
+                    </button>
+                `;
+            });
+        }
+
+        function selectG2Left(id, btn) {
+            document.querySelectorAll('.g2-left-btn').forEach(b => b.classList.remove('border-amber-500', 'bg-amber-100'));
+            btn.classList.add('border-amber-500', 'bg-amber-100');
+            state.g2SelectedLeft = { id, btn };
+            document.getElementById('g2-feedback-msg').innerText = "Sekarang pilih pasangannya di sebelah kanan!";
+        }
+
+        function selectG2Right(id, btn) {
+            if (!state.g2SelectedLeft) {
+                alert("Pilih kartu di kolom kiri terlebih dahulu!");
+                return;
+            }
+
+            if (state.g2SelectedLeft.id === id) {
+                // Correct Match
+                state.g2SelectedLeft.btn.disabled = true;
+                btn.disabled = true;
+                state.g2SelectedLeft.btn.classList.add('opacity-40', 'bg-emerald-200', 'line-through');
+                btn.classList.add('opacity-40', 'bg-emerald-200', 'line-through');
+                state.g2Matched++;
+                document.getElementById('g2-matched-count').innerText = state.g2Matched;
+                document.getElementById('g2-feedback-msg').innerText = "Hebat! Pasangan Cocok!";
+                state.g2SelectedLeft = null;
+
+                if (state.g2Matched === 6) {
+                    document.getElementById('g2-feedback-msg').innerText = "Selamat! Semua 6 pasangan kartu berhasil dihubungkan!";
+                }
+            } else {
+                document.getElementById('g2-feedback-msg').innerText = "Pasangan belum cocok, coba lagi!";
+            }
+        }
+
+        function loadG3Statement(index) {
+            if (index >= GAME3_STATEMENTS.length) {
+                showG3Result();
+                return;
+            }
+            const item = GAME3_STATEMENTS[index];
+            document.getElementById('g3-num').innerText = index + 1;
+            document.getElementById('g3-statement').innerText = `"${item.q}"`;
+            document.getElementById('g3-feedback').classList.add('hidden');
+            document.getElementById('btn-g3-next').classList.add('hidden');
+        }
+
+        function answerG3(userBool) {
+            const item = GAME3_STATEMENTS[state.g3CurrentIndex];
+            const fb = document.getElementById('g3-feedback');
+            fb.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'bg-rose-50', 'border-rose-200');
+
+            if (userBool === item.ans) {
+                state.g3Score += 10;
+                fb.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-900');
+                fb.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> <strong>Tepat Sekali!</strong> ${item.exp}`;
+            } else {
+                fb.classList.add('bg-rose-50', 'border-rose-200', 'text-rose-900');
+                fb.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 mr-1"></i> <strong>Kurang Tepat.</strong> ${item.exp}`;
+            }
+
+            document.getElementById('btn-g3-next').classList.remove('hidden');
+        }
+
+        function nextG3() {
+            state.g3CurrentIndex++;
+            loadG3Statement(state.g3CurrentIndex);
+        }
+
+        function showG3Result() {
+            document.getElementById('g3-container').classList.add('hidden');
+            document.getElementById('g3-result').classList.remove('hidden');
+            document.getElementById('g3-final-score').innerText = state.g3Score;
+        }
+
+        function initG3() {
+            state.g3CurrentIndex = 0;
+            state.g3Score = 0;
+            document.getElementById('g3-container').classList.remove('hidden');
+            document.getElementById('g3-result').classList.add('hidden');
+            loadG3Statement(0);
+        }
+
+        function initFlowchart() {
+            state.flowchartUserSteps = [];
+            renderFlowchartSource();
+            renderFlowchartCanvas();
+            document.getElementById('flow-result-box').classList.add('hidden');
+        }
+
+        function renderFlowchartSource() {
+            const container = document.getElementById('flow-source-blocks');
+            container.innerHTML = '';
+            FLOWCHART_BLOCKS.forEach(b => {
+                const isAdded = state.flowchartUserSteps.some(step => step.id === b.id);
+                container.innerHTML += `
+                    <button onclick="addFlowBlock('${b.id}')" ${isAdded ? 'disabled' : ''} class="w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:bg-purple-100 disabled:opacity-30 disabled:hover:bg-white text-xs font-bold text-slate-800 transition flex justify-between items-center">
+                        <span>${b.text}</span>
+                        <i class="fa-solid fa-plus text-purple-600"></i>
+                    </button>
+                `;
+            });
+        }
+
+        function addFlowBlock(blockId) {
+            const block = FLOWCHART_BLOCKS.find(b => b.id === blockId);
+            if (block) {
+                state.flowchartUserSteps.push(block);
+                renderFlowchartSource();
+                renderFlowchartCanvas();
+            }
+        }
+
+        function removeFlowBlock(index) {
+            state.flowchartUserSteps.splice(index, 1);
+            renderFlowchartSource();
+            renderFlowchartCanvas();
+        }
+
+        function renderFlowchartCanvas() {
+            const canvas = document.getElementById('flow-user-canvas');
+            if (state.flowchartUserSteps.length === 0) {
+                canvas.innerHTML = `<p id="flow-empty-msg" class="text-xs text-purple-400 italic text-center py-12">Belum ada blok yang ditambahkan. Klik blok di sebelah kiri!</p>`;
+                return;
+            }
+
+            canvas.innerHTML = '';
+            state.flowchartUserSteps.forEach((step, idx) => {
+                canvas.innerHTML += `
+                    <div class="flex items-center justify-between p-3 rounded-xl bg-white border border-purple-200 shadow-sm text-xs font-bold text-purple-950">
+                        <div class="flex items-center gap-2">
+                            <span class="w-5 h-5 rounded-full bg-purple-200 text-purple-800 flex items-center justify-center text-[10px]">${idx + 1}</span>
+                            <span>${step.text}</span>
+                        </div>
+                        <button onclick="removeFlowBlock(${idx})" class="text-rose-500 hover:text-rose-700 p-1"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                `;
+            });
+        }
+
+        function resetFlowchart() {
+            initFlowchart();
+        }
+
+        function verifyFlowchart() {
+            const correctOrder = ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8"];
+            const userOrder = state.flowchartUserSteps.map(s => s.id);
+
+            const resBox = document.getElementById('flow-result-box');
+            resBox.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'bg-rose-50', 'border-rose-200');
+
+            if (JSON.stringify(correctOrder) === JSON.stringify(userOrder)) {
+                resBox.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-900');
+                resBox.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 text-lg mr-1"></i> <strong>Luar Biasa! Flowchart Logika Fiqh Sempurna!</strong> Kamu berhasil menyusun logika 'Jika-Maka' secara terstruktur akurat (Skor: 100/100).`;
+            } else {
+                resBox.classList.add('bg-rose-50', 'border-rose-200', 'text-rose-900');
+                resBox.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 text-lg mr-1"></i> <strong>Urutan Logika Belum Tepat.</strong> Pastikan diawali [MULAI], urut dari pertanyaan kondisi salat, ayat sajdah, nikmat syukur, lalu diakhiri [SELESAI].`;
+            }
+        }
+
+        function loadG5Scenario(index) {
+            if (index >= GAME5_STORIES.length) {
+                alert("Selamat! Kamu telah menyelesaikan seluruh simulasi skenario cerita!");
+                switchTab('beranda');
+                return;
+            }
+            const item = GAME5_STORIES[index];
+            document.getElementById('g5-step-badge').innerText = `Skenario ${index + 1} / 5`;
+            document.getElementById('g5-story-text').innerText = item.story;
+
+            const choicesDiv = document.getElementById('g5-choices');
+            choicesDiv.innerHTML = '';
+            item.choices.forEach((c, i) => {
+                choicesDiv.innerHTML += `
+                    <button onclick="answerG5(${i})" class="g5-btn w-full text-left p-3.5 rounded-xl border border-slate-200 bg-white hover:bg-rose-50 text-xs font-semibold text-slate-800 transition">
+                        ${c}
+                    </button>
+                `;
+            });
+
+            document.getElementById('g5-discussion').classList.add('hidden');
+            document.getElementById('btn-g5-next').classList.add('hidden');
+        }
+
+        function answerG5(choice) {
+            const item = GAME5_STORIES[state.g5CurrentIndex];
+            document.querySelectorAll('.g5-btn').forEach(b => b.disabled = true);
+
+            const disc = document.getElementById('g5-discussion');
+            disc.classList.remove('hidden');
+            disc.innerHTML = `<strong>${choice === item.key ? '<span class="text-emerald-600">Jawaban Tepat!</span>' : '<span class="text-rose-600">Jawaban Belum Tepat.</span>'}</strong> ${item.disc}`;
+
+            document.getElementById('btn-g5-next').classList.remove('hidden');
+        }
+
+        function nextG5Scenario() {
+            state.g5CurrentIndex++;
+            loadG5Scenario(state.g5CurrentIndex);
+        }
+
+        function startAssessment() {
+            // Shuffle 15 questions from Question Bank
+            const shuffled = [...QUESTION_BANK].sort(() => Math.random() - 0.5);
+            state.assessActiveQuestions = shuffled.slice(0, 15);
+            state.assessUserAnswers = {};
+            state.assessCurrentIndex = 0;
+
+            document.getElementById('btn-start-assess').classList.add('hidden');
+            document.getElementById('assess-active-area').classList.remove('hidden');
+            document.getElementById('assess-result-screen').classList.add('hidden');
+
+            renderAssessQuestion();
+        }
+
+        function renderAssessQuestion() {
+            const idx = state.assessCurrentIndex;
+            const q = state.assessActiveQuestions[idx];
+
+            document.getElementById('assess-q-index').innerText = idx + 1;
+            document.getElementById('assess-cat-tag').innerText = `${q.cat} • ${q.diff}`;
+            document.getElementById('assess-question-body').innerText = q.q;
+
+            const optsDiv = document.getElementById('assess-options-container');
+            optsDiv.innerHTML = '';
+
+            q.ops.forEach((op, i) => {
+                const isChecked = state.assessUserAnswers[idx] === i;
+                optsDiv.innerHTML += `
+                    <label class="flex items-center gap-3 p-4 rounded-xl border ${isChecked ? 'border-emerald-600 bg-emerald-50' : 'border-slate-200'} hover:bg-slate-50 cursor-pointer transition">
+                        <input type="radio" name="assess-opt" value="${i}" ${isChecked ? 'checked' : ''} onchange="saveAssessAns(${idx}, ${i})" class="w-4 h-4 text-emerald-600">
+                        <span class="text-sm font-semibold text-slate-800">${String.fromCharCode(65 + i)}. ${op}</span>
+                    </label>
+                `;
+            });
+
+            document.getElementById('btn-assess-prev').disabled = (idx === 0);
+            
+            if (idx === 14) {
+                document.getElementById('btn-assess-next').classList.add('hidden');
+                document.getElementById('btn-assess-finish').classList.remove('hidden');
+            } else {
+                document.getElementById('btn-assess-next').classList.remove('hidden');
+                document.getElementById('btn-assess-finish').classList.add('hidden');
+            }
+        }
+
+        function saveAssessAns(qIndex, ansIndex) {
+            state.assessUserAnswers[qIndex] = ansIndex;
+        }
+
+        function prevAssessQ() {
+            if (state.assessCurrentIndex > 0) {
+                state.assessCurrentIndex--;
+                renderAssessQuestion();
+            }
+        }
+
+        function nextAssessQ() {
+            if (state.assessCurrentIndex < 14) {
+                state.assessCurrentIndex++;
+                renderAssessQuestion();
+            }
+        }
+
+        function submitAssessment() {
+            let correctCount = 0;
+            state.assessActiveQuestions.forEach((q, i) => {
+                if (state.assessUserAnswers[i] === q.key) {
+                    correctCount++;
+                }
+            });
+
+            const score = Math.round((correctCount / 15) * 100);
+            document.getElementById('assess-active-area').classList.add('hidden');
+            document.getElementById('assess-result-screen').classList.remove('hidden');
+            document.getElementById('assess-final-score-val').innerText = score;
+
+            document.getElementById('stat-asesmen-score').innerText = `${score} / 100`;
+
+            const badge = document.getElementById('assess-grade-badge');
+            const msg = document.getElementById('assess-grade-msg');
+
+            if (score >= 90) {
+                badge.innerText = "Sangat Baik (Master Detektif Fiqh)";
+                msg.innerText = "Luar biasa! Pemahaman kognitif dan analisis fikih sujudmu sangat matang!";
+            } else if (score >= 80) {
+                badge.innerText = "Baik (Detektif Handal)";
+                msg.innerText = "Bagus sekali! Pemahaman konsep dan analisismu sudah sangat baik.";
+            } else if (score >= 70) {
+                badge.innerText = "Cukup (Detektif Muda)";
+                msg.innerText = "Cukup baik, pelajari kembali beberapa catatan kasus untuk memperkuat pemahaman.";
+            } else {
+                badge.innerText = "Perlu Belajar Kembali";
+                msg.innerText = "Jangan berkecil hati. Buka kembali Zona Materi dan ulangi latihan laboratorium kasus!";
+            }
+
+            // Render Breakdown
+            const list = document.getElementById('assess-breakdown-list');
+            list.innerHTML = '';
+            state.assessActiveQuestions.forEach((q, i) => {
+                const userAns = state.assessUserAnswers[i];
+                const isCorrect = (userAns === q.key);
+                list.innerHTML += `
+                    <div class="p-3.5 rounded-xl border ${isCorrect ? 'border-emerald-200 bg-emerald-50' : 'border-rose-200 bg-rose-50'} space-y-1">
+                        <div class="font-bold text-slate-800">${i+1}. ${q.q}</div>
+                        <div class="text-[11px] ${isCorrect ? 'text-emerald-800' : 'text-rose-800'}">
+                            Jawaban Kamu: <strong>${userAns !== undefined ? q.ops[userAns] : 'Belum dijawab'}</strong> • Kunci: <strong>${q.ops[q.key]}</strong>
+                        </div>
+                        <div class="text-[11px] text-slate-600 italic">${q.exp}</div>
+                    </div>
+                `;
+            });
+        }
+
+        function saveReflection(e) {
+            e.preventDefault();
+            document.getElementById('refl-success-msg').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('refl-success-msg').classList.add('hidden');
+            }, 4000);
+        }
+
+        function renderTeacherQBank() {
+            const container = document.getElementById('teacher-qbank-list');
+            container.innerHTML = '';
+            QUESTION_BANK.forEach(q => {
+                container.innerHTML += `
+                    <div class="p-3 rounded-xl bg-white border border-slate-200 text-xs space-y-1">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-emerald-800">#Q-${q.id} [${q.cat} - ${q.diff}]</span>
+                            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-600">ATP Target: ${q.comp}</span>
+                        </div>
+                        <p class="font-semibold text-slate-800">${q.q}</p>
+                        <p class="text-slate-600">Kunci: <strong class="text-emerald-700">${q.ops[q.key]}</strong></p>
+                        <p class="text-slate-500 italic text-[11px]">Penjelasan: ${q.exp}</p>
+                    </div>
+                `;
+            });
+        }
+
+        function togglePresentationMode() {
+            alert("Mode Presentasi Proyektor Diaktifkan: Tampilan disesuaikan untuk layar lebar proyektor kelas.");
+        }
+
+        window.onload = function() {
+            switchTab('beranda');
+        };
+    </script>
+</body>
+</html>
