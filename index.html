@@ -54,7 +54,15 @@
         /* Cetak LKM: hanya lembar yang dipilih yang masuk ke printer */
         .lkm-sheet { background: #fff; color: #111827; }
         .lkm-answer-line { border-bottom: 1px solid #64748b; min-height: 28px; }
+        .flow-shape { position: relative; display:flex; align-items:center; justify-content:center; text-align:center; min-height:54px; padding:10px 18px; font-size:12px; font-weight:700; }
+        .flow-shape-start, .flow-shape-end { border:2px solid #059669; border-radius:999px; background:#ecfdf5; color:#065f46; }
+        .flow-shape-process { border:2px solid #64748b; border-radius:4px; background:#f8fafc; color:#1e293b; }
+        .flow-shape-decision { border:2px solid #d97706; background:#fffbeb; color:#92400e; clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%); min-height:94px; padding:20px 34px; }
+        .flow-shape-io { border:2px solid #0284c7; background:#f0f9ff; color:#075985; transform:skewX(-8deg); }
+        .flow-shape-io > span { transform:skewX(8deg); }
         @page { size: A4 portrait; margin: 14mm; }
+        @page lkmLandscape { size: A4 landscape; margin: 10mm; }
+        body.print-lkm-landscape #lkm-1 { page: lkmLandscape; }
         @media print {
             body.print-lkm * { visibility: hidden !important; }
             body.print-lkm #sec-lkm,
@@ -80,6 +88,10 @@
             body.print-lkm #sec-lkm .lkm-sheet h2 { font-size: 16pt !important; }
             body.print-lkm #sec-lkm .lkm-sheet h3 { font-size: 12pt !important; }
             body.print-lkm #sec-lkm .lkm-answer-line { min-height: 26px; }
+            body.print-lkm #lkm-1 .lkm-comparison th, body.print-lkm #lkm-1 .lkm-comparison td { border: 1px solid #475569 !important; padding: 5px !important; vertical-align: top !important; }
+            body.print-lkm #lkm-1 .lkm-write-cell { height: 45px !important; }
+            body.print-lkm-landscape #sec-lkm #lkm-1 { font-size: 9pt !important; }
+            body.print-lkm-landscape #sec-lkm #lkm-1 .lkm-write-cell { height: 42px !important; }
         }
     </style>
 </head>
@@ -638,6 +650,20 @@
                 </div>
 
                 <!-- Interactive Drag/Click Builder Area -->
+                <div class="rounded-2xl border border-purple-200 bg-purple-50 p-4 space-y-3">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div><h3 class="font-extrabold text-purple-950">Tantangan bertingkat: Bukan sekadar menyusun</h3><p class="text-xs text-purple-800">Pahami fungsi simbol, periksa percabangan YA/TIDAK, dan temukan alur yang tidak logis.</p></div>
+                        <span class="text-xs font-bold text-purple-700">LEVEL 2 • ANALISIS STRUKTUR</span>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+                        <div class="flow-shape flow-shape-start">OVAL<br>Mulai/Selesai</div>
+                        <div class="flow-shape flow-shape-process">PERSEGI PANJANG<br>Proses</div>
+                        <div class="flow-shape flow-shape-decision">BELAH KETUPAT<br>Keputusan</div>
+                        <div class="flow-shape flow-shape-io"><span>JAJAR GENJANG<br>Input/Output</span></div>
+                    </div>
+                    <p class="text-xs text-purple-900">Tantangan: susun alur, lalu jelaskan mengapa pertanyaan harus memakai simbol keputusan dan mengapa setiap cabang perlu diberi label. Alur yang hanya berurutan tanpa percabangan belum dianggap flowchart keputusan yang lengkap.</p>
+                </div>
+
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                     <!-- Available Flowchart Blocks -->
                     <div class="lg:col-span-5 bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-3">
@@ -950,24 +976,34 @@
                     <p>Nomor Absen: __________________________</p><p>Tanggal: _____________</p>
                 </div>
                 <div><h3 class="font-bold print-green">Tujuan</h3><p class="text-sm">Membedakan sujud syukur, sujud sahwi, dan sujud tilawah berdasarkan sebab dan ketentuan dasarnya.</p></div>
-                <div><h3 class="font-bold print-green">Ringkasan Referensi</h3>
-                    <table class="w-full border-collapse text-xs mt-2">
-                        <thead><tr><th class="border border-slate-500 p-2 text-left">Jenis</th><th class="border border-slate-500 p-2 text-left">Sebab utama</th><th class="border border-slate-500 p-2 text-left">Jumlah</th></tr></thead>
+                <div><h3 class="font-bold print-green">A. Tabel Perbandingan Tiga Jenis Sujud</h3>
+                    <p class="text-xs mt-1">Petunjuk: Lengkapi setiap kolom menggunakan materi yang telah dipelajari. Tuliskan jawaban ringkas, jelas, dan sesuai rujukan pembelajaran.</p>
+                    <table class="lkm-comparison w-full border-collapse text-xs mt-2 table-fixed">
+                        <thead><tr>
+                            <th class="border border-slate-500 p-2 text-left w-[19%]">Aspek Perbandingan</th>
+                            <th class="border border-slate-500 p-2 text-left">Sujud Syukur</th>
+                            <th class="border border-slate-500 p-2 text-left">Sujud Sahwi</th>
+                            <th class="border border-slate-500 p-2 text-left">Sujud Tilawah</th>
+                        </tr></thead>
                         <tbody>
-                            <tr><td class="border border-slate-500 p-2">Sujud Syukur</td><td class="border border-slate-500 p-2">Mendapat nikmat atau terhindar dari musibah</td><td class="border border-slate-500 p-2">1 kali</td></tr>
-                            <tr><td class="border border-slate-500 p-2">Sujud Sahwi</td><td class="border border-slate-500 p-2">Kekeliruan tertentu karena lupa dalam salat</td><td class="border border-slate-500 p-2">2 kali</td></tr>
-                            <tr><td class="border border-slate-500 p-2">Sujud Tilawah</td><td class="border border-slate-500 p-2">Membaca atau mendengar ayat sajdah</td><td class="border border-slate-500 p-2">1 kali</td></tr>
+                            <tr><th class="border border-slate-500 p-2 text-left">Pengertian</th><td class="border border-slate-500 p-2 lkm-write-cell"></td><td class="border border-slate-500 p-2 lkm-write-cell"></td><td class="border border-slate-500 p-2 lkm-write-cell"></td></tr>
+                            <tr><th class="border border-slate-500 p-2 text-left">Sebab/alasan</th><td class="border border-slate-500 p-2 lkm-write-cell"></td><td class="border border-slate-500 p-2 lkm-write-cell"></td><td class="border border-slate-500 p-2 lkm-write-cell"></td></tr>
+                            <tr><th class="border border-slate-500 p-2 text-left">Waktu pelaksanaan</th><td class="border border-slate-500 p-2 lkm-write-cell"></td><td class="border border-slate-500 p-2 lkm-write-cell"></td><td class="border border-slate-500 p-2 lkm-write-cell"></td></tr>
+                            <tr><th class="border border-slate-500 p-2 text-left">Jumlah sujud</th><td class="border border-slate-500 p-2 lkm-write-cell"></td><td class="border border-slate-500 p-2 lkm-write-cell"></td><td class="border border-slate-500 p-2 lkm-write-cell"></td></tr>
+                            <tr><th class="border border-slate-500 p-2 text-left">Tata cara/ketentuan</th><td class="border border-slate-500 p-2 lkm-write-cell"></td><td class="border border-slate-500 p-2 lkm-write-cell"></td><td class="border border-slate-500 p-2 lkm-write-cell"></td></tr>
+                            <tr><th class="border border-slate-500 p-2 text-left">Kaitan dengan salat</th><td class="border border-slate-500 p-2 lkm-write-cell"></td><td class="border border-slate-500 p-2 lkm-write-cell"></td><td class="border border-slate-500 p-2 lkm-write-cell"></td></tr>
+                            <tr><th class="border border-slate-500 p-2 text-left">Contoh sehari-hari</th><td class="border border-slate-500 p-2 lkm-write-cell"></td><td class="border border-slate-500 p-2 lkm-write-cell"></td><td class="border border-slate-500 p-2 lkm-write-cell"></td></tr>
                         </tbody>
                     </table>
                 </div>
-                <div><h3 class="font-bold print-green">A. Tentukan jenis sujud dan berikan alasan</h3>
+                <div><h3 class="font-bold print-green">B. Terapkan Pemahamanmu</h3>
                     <ol class="list-decimal pl-5 space-y-3 text-sm mt-2">
-                        <li>Dina mendapat kabar bahwa ibunya sembuh dari sakit. Jenis sujud: ____________________<div class="lkm-answer-line"></div></li>
-                        <li>Rafi membaca ayat sajdah ketika membaca Al-Qur'an. Jenis sujud: ____________________<div class="lkm-answer-line"></div></li>
-                        <li>Fahmi lupa tasyahud awal dalam salat. Jenis sujud yang berkaitan: ____________________<div class="lkm-answer-line"></div></li>
+                        <li>Dina mendapat kabar bahwa ibunya sembuh dari sakit. Jenis sujud yang sesuai dan alasannya:<div class="lkm-answer-line"></div><div class="lkm-answer-line"></div></li>
+                        <li>Rafi membaca ayat sajdah ketika membaca Al-Qur'an. Jenis sujud yang berkaitan dan alasannya:<div class="lkm-answer-line"></div><div class="lkm-answer-line"></div></li>
+                        <li>Fahmi lupa tasyahud awal dalam salat. Jenis sujud yang berkaitan dan hal yang perlu diperhatikan:<div class="lkm-answer-line"></div><div class="lkm-answer-line"></div></li>
                     </ol>
                 </div>
-                <div><h3 class="font-bold print-green">B. Jelaskan perbedaan utama ketiga jenis sujud.</h3><div class="lkm-answer-line"></div><div class="lkm-answer-line"></div></div>
+                <div><h3 class="font-bold print-green">C. Simpulkan</h3><p class="text-sm">Apa perbedaan utama yang membantumu menentukan jenis sujud dalam suatu situasi?</p><div class="lkm-answer-line"></div><div class="lkm-answer-line"></div></div>
             </article>
 
             <!-- Printable LKM 2 -->
@@ -1144,14 +1180,16 @@
         ];
 
         const FLOWCHART_BLOCKS = [
-            { id: "b1", text: "1. [MULAI] Inisialisasi Kasus", type: "start" },
-            { id: "b2", text: "2. [KONDISI] Terkait Lupa / Kekeliruan Salat?", type: "cond" },
-            { id: "b3", text: "3. [JIKA YA] Sujud Sahwi (2x Sujud Sebelum Salam)", type: "act" },
-            { id: "b4", text: "4. [JIKA TIDAK] Terkait Membaca/Mendengar Ayat Sajdah?", type: "cond" },
-            { id: "b5", text: "5. [JIKA YA] Sujud Tilawah (1x Sujud)", type: "act" },
-            { id: "b6", text: "6. [JIKA TIDAK] Terkait Nikmat Besar / Bebas Bencana?", type: "cond" },
-            { id: "b7", text: "7. [JIKA YA] Sujud Syukur (1x Sujud di Luar Salat)", type: "act" },
-            { id: "b8", text: "8. [SELESAI] Keputusan Fiqh Ditetapkan", type: "end" }
+            { id: "b1", text: "MULAI: Terima dan baca kasus", type: "start", shape: "start", role: "Terminator" },
+            { id: "b2", text: "Masukkan informasi kejadian yang dialami", type: "io", shape: "io", role: "Input/Output" },
+            { id: "b3", text: "Apakah kejadian terkait lupa/kekeliruan dalam salat?", type: "cond", shape: "decision", role: "Decision" },
+            { id: "b4", text: "YA → Identifikasi jenis kekeliruan; pertimbangkan sujud sahwi", type: "act", shape: "process", role: "Proses" },
+            { id: "b5", text: "TIDAK → Apakah terkait membaca/mendengar ayat sajdah?", type: "cond", shape: "decision", role: "Decision" },
+            { id: "b6", text: "YA → Pertimbangkan sujud tilawah", type: "act", shape: "process", role: "Proses" },
+            { id: "b7", text: "TIDAK → Apakah mendapat nikmat atau terhindar dari musibah?", type: "cond", shape: "decision", role: "Decision" },
+            { id: "b8", text: "YA → Pertimbangkan sujud syukur; jika tidak, periksa informasi lain", type: "act", shape: "process", role: "Proses" },
+            { id: "b9", text: "Tampilkan keputusan dan alasan berdasarkan materi", type: "io", shape: "io", role: "Output" },
+            { id: "b10", text: "SELESAI: Periksa kembali ketepatan keputusan", type: "end", shape: "end", role: "Terminator" }
         ];
 
         const GAME5_STORIES = [
@@ -1536,9 +1574,10 @@
             container.innerHTML = '';
             FLOWCHART_BLOCKS.forEach(b => {
                 const isAdded = state.flowchartUserSteps.some(step => step.id === b.id);
+                const shapeLabel = {start:'OVAL • MULAI',end:'OVAL • SELESAI',process:'PERSEGI PANJANG • PROSES',decision:'BELAH KETUPAT • KEPUTUSAN',io:'JAJAR GENJANG • INPUT/OUTPUT'}[b.shape] || b.role;
                 container.innerHTML += `
-                    <button onclick="addFlowBlock('${b.id}')" ${isAdded ? 'disabled' : ''} class="w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:bg-purple-100 disabled:opacity-30 disabled:hover:bg-white text-xs font-bold text-slate-800 transition flex justify-between items-center">
-                        <span>${b.text}</span>
+                    <button onclick="addFlowBlock('${b.id}')" ${isAdded ? 'disabled' : ''} class="w-full text-left p-3 rounded-xl border border-slate-200 bg-white hover:bg-purple-100 disabled:opacity-30 disabled:hover:bg-white text-xs text-slate-800 transition flex justify-between items-center gap-3">
+                        <span><span class="block text-[9px] uppercase tracking-wide text-purple-700 font-extrabold mb-1">${shapeLabel}</span><span class="font-bold">${b.text}</span></span>
                         <i class="fa-solid fa-plus text-purple-600"></i>
                     </button>
                 `;
@@ -1569,13 +1608,16 @@
 
             canvas.innerHTML = '';
             state.flowchartUserSteps.forEach((step, idx) => {
+                const shapeClass = {start:'flow-shape-start',end:'flow-shape-end',process:'flow-shape-process',decision:'flow-shape-decision',io:'flow-shape-io'}[step.shape] || 'flow-shape-process';
                 canvas.innerHTML += `
-                    <div class="flex items-center justify-between p-3 rounded-xl bg-white border border-purple-200 shadow-sm text-xs font-bold text-purple-950">
-                        <div class="flex items-center gap-2">
-                            <span class="w-5 h-5 rounded-full bg-purple-200 text-purple-800 flex items-center justify-center text-[10px]">${idx + 1}</span>
-                            <span>${step.text}</span>
+                    <div class="flex flex-col items-center gap-1">
+                        <div class="flow-shape ${shapeClass} w-full max-w-md"><span>${step.text}</span></div>
+                        <div class="flex items-center gap-3 text-[10px] text-purple-700 font-bold">
+                            ${step.shape === 'decision' ? '<span class="rounded bg-emerald-100 text-emerald-800 px-2 py-1">Cabang YA</span><span class="rounded bg-amber-100 text-amber-800 px-2 py-1">Cabang TIDAK</span>' : ''}
+                            <span>${step.role}</span>
+                            <button onclick="removeFlowBlock(${idx})" class="text-rose-500 hover:text-rose-700 p-1" aria-label="Hapus blok"><i class="fa-solid fa-trash-can"></i> Hapus</button>
                         </div>
-                        <button onclick="removeFlowBlock(${idx})" class="text-rose-500 hover:text-rose-700 p-1"><i class="fa-solid fa-trash-can"></i></button>
+                        ${idx < state.flowchartUserSteps.length - 1 ? '<i class="fa-solid fa-arrow-down text-purple-500" aria-hidden="true"></i>' : ''}
                     </div>
                 `;
             });
@@ -1586,18 +1628,26 @@
         }
 
         function verifyFlowchart() {
-            const correctOrder = ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8"];
+            const correctOrder = ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9", "b10"];
             const userOrder = state.flowchartUserSteps.map(s => s.id);
+            const hasDecision = state.flowchartUserSteps.some(s => s.shape === 'decision');
+            const hasInputOutput = state.flowchartUserSteps.some(s => s.shape === 'io');
+            const hasStartEnd = state.flowchartUserSteps.length > 1 && state.flowchartUserSteps[0].shape === 'start' && state.flowchartUserSteps[state.flowchartUserSteps.length - 1].shape === 'end';
 
             const resBox = document.getElementById('flow-result-box');
             resBox.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'bg-rose-50', 'border-rose-200');
 
-            if (JSON.stringify(correctOrder) === JSON.stringify(userOrder)) {
+            if (JSON.stringify(correctOrder) === JSON.stringify(userOrder) && hasDecision && hasInputOutput && hasStartEnd) {
                 resBox.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-900');
-                resBox.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 text-lg mr-1"></i> <strong>Luar Biasa! Flowchart Logika Fiqh Sempurna!</strong> Kamu berhasil menyusun logika 'Jika-Maka' secara terstruktur akurat (Skor: 100/100).`;
+                resBox.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 text-lg mr-1"></i> <strong>Struktur flowchart lengkap (100/100).</strong><ul class="list-disc pl-5 mt-2 space-y-1"><li>Terminator membuka dan menutup alur.</li><li>Input/output digunakan untuk informasi dan hasil.</li><li>Simbol keputusan menandai pertanyaan bercabang.</li><li>Urutan pemeriksaan kondisi sudah tersusun.</li></ul><p class="mt-2"><strong>Tantangan lanjutan:</strong> Jelaskan mengapa cabang TIDAK perlu diteruskan ke pertanyaan berikutnya dan kapan kasus harus ditandai "informasi belum cukup".</p>`;
             } else {
                 resBox.classList.add('bg-rose-50', 'border-rose-200', 'text-rose-900');
-                resBox.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 text-lg mr-1"></i> <strong>Urutan Logika Belum Tepat.</strong> Pastikan diawali [MULAI], urut dari pertanyaan kondisi salat, ayat sajdah, nikmat syukur, lalu diakhiri [SELESAI].`;
+                const hints = [];
+                if (!hasStartEnd) hints.push('Mulai dengan simbol oval MULAI dan akhiri dengan oval SELESAI.');
+                if (!hasInputOutput) hints.push('Tambahkan simbol input/output untuk informasi kasus dan hasil keputusan.');
+                if (!hasDecision) hints.push('Pertanyaan yang menghasilkan YA/TIDAK harus memakai simbol belah ketupat.');
+                if (JSON.stringify(correctOrder) !== JSON.stringify(userOrder)) hints.push('Periksa urutan blok dan pastikan semua kondisi ditinjau sebelum keputusan akhir.');
+                resBox.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 text-lg mr-1"></i> <strong>Flowchart belum lengkap atau urutannya belum tepat.</strong><ul class="list-disc pl-5 mt-2 space-y-1">${hints.map(h => `<li>${h}</li>`).join('')}</ul><p class="mt-2">Ingat: bentuk simbol menunjukkan fungsi langkah, bukan sekadar hiasan.</p>`;
             }
         }
 
@@ -1764,6 +1814,7 @@
             document.querySelectorAll('#sec-lkm .lkm-sheet').forEach(sheet => sheet.classList.remove('print-target'));
             selected.classList.add('print-target');
             document.body.classList.add('print-lkm');
+            document.body.classList.toggle('print-lkm-landscape', lkmId === 'lkm-1');
             document.body.classList.remove('print-all-lkm');
             window.print();
         }
@@ -1771,11 +1822,12 @@
         function printAllLKM() {
             document.querySelectorAll('#sec-lkm .lkm-sheet').forEach(sheet => sheet.classList.remove('print-target'));
             document.body.classList.add('print-lkm', 'print-all-lkm');
+            document.body.classList.remove('print-lkm-landscape');
             window.print();
         }
 
         function cleanupLKMPrint() {
-            document.body.classList.remove('print-lkm', 'print-all-lkm');
+            document.body.classList.remove('print-lkm', 'print-all-lkm', 'print-lkm-landscape');
             document.querySelectorAll('#sec-lkm .lkm-sheet').forEach(sheet => sheet.classList.remove('print-target'));
         }
 
