@@ -121,6 +121,7 @@
                 <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium">
                     <button onclick="switchTab('beranda')" class="nav-link px-3 py-2 rounded-lg hover:bg-emerald-700 transition flex items-center gap-1.5" id="nav-beranda"><i class="fa-solid fa-house text-xs"></i> Beranda</button>
                     <button onclick="switchTab('materi')" class="nav-link px-3 py-2 rounded-lg hover:bg-emerald-700 transition flex items-center gap-1.5" id="nav-materi"><i class="fa-solid fa-book-open text-xs"></i> Zona Materi</button>
+                    <button onclick="switchTab('tata-cara')" class="nav-link px-3 py-2 rounded-lg hover:bg-emerald-700 transition flex items-center gap-1.5" id="nav-tata-cara"><i class="fa-solid fa-person-praying text-xs"></i> Tata Cara Sujud</button>
                     <button onclick="switchTab('lab-kasus')" class="nav-link px-3 py-2 rounded-lg hover:bg-emerald-700 transition flex items-center gap-1.5" id="nav-lab-kasus"><i class="fa-solid fa-flask text-xs"></i> Lab Kasus</button>
                     <div class="relative group">
                         <button class="px-3 py-2 rounded-lg hover:bg-emerald-700 transition flex items-center gap-1.5"><i class="fa-solid fa-gamepad text-xs"></i> Mini Game <i class="fa-solid fa-chevron-down text-xs"></i></button>
@@ -155,6 +156,7 @@
         <div id="mobile-menu" class="hidden lg:hidden bg-emerald-900 border-t border-emerald-700 px-4 py-3 space-y-2">
             <button onclick="switchTab('beranda'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded text-emerald-100 hover:bg-emerald-800"><i class="fa-solid fa-house mr-2"></i>Beranda</button>
             <button onclick="switchTab('materi'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded text-emerald-100 hover:bg-emerald-800"><i class="fa-solid fa-book-open mr-2"></i>Zona Materi</button>
+            <button onclick="switchTab('tata-cara'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded text-emerald-100 hover:bg-emerald-800"><i class="fa-solid fa-person-praying mr-2"></i>Tata Cara Lengkap Setiap Sujud</button>
             <button onclick="switchTab('lab-kasus'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded text-emerald-100 hover:bg-emerald-800"><i class="fa-solid fa-flask mr-2"></i>Lab Kasus Analysis</button>
             <div class="border-t border-emerald-800 my-1 pt-1">
                 <p class="px-3 text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-1">Mini Games</p>
@@ -925,6 +927,71 @@
                         <!-- Dynamic Question Bank Items -->
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- ==================== PANDUAN TATA CARA SETIAP SUJUD ==================== -->
+        <section id="sec-tata-cara" class="tab-content hidden space-y-6">
+            <div class="bg-gradient-to-r from-emerald-800 to-teal-700 rounded-3xl p-6 sm:p-8 text-white shadow-lg">
+                <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-300"><i class="fa-solid fa-book-open-reader"></i> Panduan Praktik PAI Kelas VII</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold mt-2">Tata Cara Lengkap Setiap Sujud</h2>
+                <p class="text-sm text-emerald-50 mt-2 max-w-3xl">Pelajari kapan sujud dilakukan, persiapan, urutan gerakan, serta hal penting yang perlu diperhatikan. Ikuti arahan guru dan ketentuan fikih yang dipelajari di kelas.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-5 sm:p-7 border border-emerald-100 shadow-sm space-y-4">
+                <div class="flex items-center gap-3"><div class="w-11 h-11 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl"><i class="fa-solid fa-hands-praying"></i></div><div><h3 class="text-xl font-extrabold text-emerald-900">1. Sujud Syukur</h3><p class="text-sm text-slate-500">Dilakukan di luar salat ketika memperoleh nikmat besar atau terhindar dari musibah.</p></div></div>
+                <ol class="list-decimal pl-6 space-y-2 text-sm text-slate-700 leading-relaxed">
+                    <li>Pastikan peristiwa yang dialami merupakan nikmat atau keselamatan yang patut disyukuri.</li>
+                    <li>Menurut ketentuan yang lazim diajarkan dalam Mazhab Syafi'i, bersuci dari hadas, menutup aurat, dan menghadap kiblat sebagaimana persiapan salat.</li>
+                    <li>Niatkan sujud syukur karena Allah SWT.</li>
+                    <li>Bertakbir ketika hendak turun sujud sesuai tuntunan yang dipelajari bersama guru, lalu lakukan <strong>satu kali sujud</strong>.</li>
+                    <li>Baca zikir/doa sujud yang diajarkan. Salah satu rangkaian zikir yang ditampilkan dalam materi MPI adalah tasbih, tahmid, takbir, lalu hauqalah.</li>
+                    <li>Bangkit dari sujud. Sujud syukur tidak memiliki rangkaian dua sujud seperti sujud sahwi.</li>
+                </ol>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-sm text-emerald-900"><strong>Ingat:</strong> Sujud syukur dilakukan di luar salat, bukan sebagai gerakan tambahan di tengah salat.</div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-5 sm:p-7 border border-amber-100 shadow-sm space-y-4">
+                <div class="flex items-center gap-3"><div class="w-11 h-11 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl"><i class="fa-solid fa-brain"></i></div><div><h3 class="text-xl font-extrabold text-amber-900">2. Sujud Sahwi</h3><p class="text-sm text-slate-500">Dilakukan karena lupa atau keraguan tertentu dalam salat.</p></div></div>
+                <ol class="list-decimal pl-6 space-y-2 text-sm text-slate-700 leading-relaxed">
+                    <li>Kenali sebabnya, misalnya lupa melakukan sunnah ab'adh atau ragu jumlah rakaat.</li>
+                    <li>Jika ragu jumlah rakaat, ikuti ketentuan fikih yang dipelajari, termasuk membangun keputusan pada jumlah yang diyakini sesuai tuntunan mazhab.</li>
+                    <li>Lanjutkan salat dan sempurnakan bagian-bagian yang diperlukan terlebih dahulu.</li>
+                    <li>Dalam tata cara yang lazim diajarkan menurut Mazhab Syafi'i, lakukan dua kali sujud sahwi di akhir salat sebelum salam.</li>
+                    <li>Pada sujud pertama, membaca zikir sujud; kemudian duduk di antara dua sujud.</li>
+                    <li>Lakukan sujud kedua, lalu kembali duduk dan akhiri salat dengan salam sesuai urutan salat.</li>
+                </ol>
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-950"><strong>Ingat:</strong> Sujud sahwi dilakukan <strong>dua kali</strong>. Letak pelaksanaannya dapat berbeda pada kondisi atau rincian fikih tertentu, jadi ikuti contoh dan arahan guru.</div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-5 sm:p-7 border border-teal-100 shadow-sm space-y-4">
+                <div class="flex items-center gap-3"><div class="w-11 h-11 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center text-xl"><i class="fa-solid fa-book-quran"></i></div><div><h3 class="text-xl font-extrabold text-teal-900">3. Sujud Tilawah</h3><p class="text-sm text-slate-500">Berkaitan dengan membaca atau mendengar ayat sajdah dalam Al-Qur'an.</p></div></div>
+                <h4 class="font-bold text-slate-800">A. Di luar salat</h4>
+                <ol class="list-decimal pl-6 space-y-2 text-sm text-slate-700 leading-relaxed">
+                    <li>Kenali ayat sajdah ketika membaca atau mendengar bacaan Al-Qur'an.</li>
+                    <li>Untuk tata cara yang lazim diajarkan dalam Mazhab Syafi'i, siapkan diri dengan bersuci, menutup aurat, dan menghadap kiblat.</li>
+                    <li>Niatkan sujud tilawah, kemudian bertakbiratul ihram sesuai tuntunan yang diajarkan.</li>
+                    <li>Lakukan satu kali sujud dan baca zikir/doa sujud tilawah.</li>
+                    <li>Bangkit dan duduk sejenak, kemudian salam sesuai tata cara yang dipelajari.</li>
+                </ol>
+                <h4 class="font-bold text-slate-800 mt-3">B. Di dalam salat</h4>
+                <ol class="list-decimal pl-6 space-y-2 text-sm text-slate-700 leading-relaxed">
+                    <li>Ketika membaca ayat sajdah, imam atau orang yang salat sendiri bertakbir untuk turun sujud sesuai tuntunan.</li>
+                    <li>Lakukan satu kali sujud tilawah dan baca zikir sujud.</li>
+                    <li>Bertakbir ketika bangkit, lalu lanjutkan bacaan atau gerakan salat sesuai urutan.</li>
+                    <li>Jika menjadi makmum, ikuti gerakan imam dan jangan mendahuluinya.</li>
+                </ol>
+                <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-sm text-teal-950"><strong>Ingat:</strong> Sujud tilawah dilakukan <strong>satu kali</strong>. Tata cara di dalam dan di luar salat tidak sama.</div>
+            </div>
+
+            <div class="bg-slate-50 rounded-2xl border border-slate-200 p-5 space-y-3">
+                <h3 class="font-extrabold text-slate-800"><i class="fa-solid fa-list-check text-emerald-700 mr-2"></i>Ringkasan Cepat</h3>
+                <div class="overflow-x-auto"><table class="w-full text-sm border-collapse"><thead><tr class="bg-slate-200 text-slate-800"><th class="border border-slate-300 p-3 text-left">Jenis sujud</th><th class="border border-slate-300 p-3 text-left">Sebab utama</th><th class="border border-slate-300 p-3 text-left">Jumlah</th><th class="border border-slate-300 p-3 text-left">Konteks</th></tr></thead><tbody>
+                    <tr class="bg-white"><td class="border border-slate-300 p-3 font-semibold">Syukur</td><td class="border border-slate-300 p-3">Nikmat besar atau terhindar dari musibah</td><td class="border border-slate-300 p-3">1 kali</td><td class="border border-slate-300 p-3">Di luar salat</td></tr>
+                    <tr class="bg-white"><td class="border border-slate-300 p-3 font-semibold">Sahwi</td><td class="border border-slate-300 p-3">Lupa/kekeliruan tertentu dalam salat</td><td class="border border-slate-300 p-3">2 kali</td><td class="border border-slate-300 p-3">Di akhir salat sesuai ketentuan</td></tr>
+                    <tr class="bg-white"><td class="border border-slate-300 p-3 font-semibold">Tilawah</td><td class="border border-slate-300 p-3">Membaca/mendengar ayat sajdah</td><td class="border border-slate-300 p-3">1 kali</td><td class="border border-slate-300 p-3">Di dalam atau di luar salat</td></tr>
+                </tbody></table></div>
+                <p class="text-xs text-slate-500">Catatan pembelajaran: beberapa rincian tata cara memiliki perbedaan pendapat ulama. Panduan ini mengikuti garis besar materi MPI dan praktik yang lazim diajarkan di sekolah; konfirmasikan rincian kepada guru PAI.</p>
             </div>
         </section>
 
