@@ -89,9 +89,15 @@
             body.print-lkm #sec-lkm .lkm-sheet h3 { font-size: 12pt !important; }
             body.print-lkm #sec-lkm .lkm-answer-line { min-height: 26px; }
             body.print-lkm #lkm-1 .lkm-comparison th, body.print-lkm #lkm-1 .lkm-comparison td { border: 1px solid #475569 !important; padding: 5px !important; vertical-align: top !important; }
-            body.print-lkm #lkm-1 .lkm-write-cell { height: 45px !important; }
-            body.print-lkm-landscape #sec-lkm #lkm-1 { font-size: 9pt !important; }
-            body.print-lkm-landscape #sec-lkm #lkm-1 .lkm-write-cell { height: 42px !important; }
+            body.print-lkm #lkm-1 .lkm-write-cell { height: 58px !important; }
+            body.print-lkm #lkm-1 .lkm-comparison th,
+            body.print-lkm #lkm-1 .lkm-comparison td { padding: 7px !important; font-size: 9.5pt !important; }
+            body.print-lkm-landscape #sec-lkm #lkm-1 { font-size: 9.5pt !important; }
+            body.print-lkm-landscape #sec-lkm #lkm-1 .lkm-write-cell { height: 66px !important; }
+            body.print-lkm-landscape #sec-lkm #lkm-1 .lkm-comparison th,
+            body.print-lkm-landscape #sec-lkm #lkm-1 .lkm-comparison td { padding: 8px !important; }
+            body.print-lkm #sec-lkm .lkm-sheet table { width: 100%; }
+            body.print-lkm #sec-lkm .lkm-sheet { break-inside: avoid; }
         }
     </style>
 </head>
@@ -335,20 +341,22 @@
                             </div>
                         </div>
 
-                        <!-- Bacaan Sujud Syukur -->
-                        <div class="bg-emerald-50/80 p-5 rounded-2xl border border-emerald-200/60 space-y-2">
+                        <!-- Zikir/Bacaan Sujud Syukur sesuai materi pembelajaran -->
+                        <div class="bg-emerald-50/80 p-5 rounded-2xl border border-emerald-200/60 space-y-3">
                             <h4 class="font-bold text-sm text-emerald-900 flex items-center gap-2">
-                                <i class="fa-solid fa-quote-left text-emerald-600"></i> Bacaan Sujud Syukur
+                                <i class="fa-solid fa-quote-left text-emerald-600"></i> Zikir Sujud Syukur
                             </h4>
-                            <p class="arabic-text text-right font-semibold text-emerald-950 py-2">
-                                سَجَدَ وَجْهِيَ لِلَّذِي خَلَقَهُ وَصَوَّرَهُ وَشَقَّ سَمْعَهُ وَبَصَرَهُ بِحَوْلِهِ وَقُوَّتِهِ
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                Saat sujud syukur, bacalah kalimat tasbih, tahmid, dan takbir, kemudian dilanjutkan dengan kalimat hauqalah.
                             </p>
-                            <p class="text-xs text-slate-600 italic">
-                                "Sajada wajhiya lilladzi khalaqahu wa shawwarahu wa syaqqa sam'ahu wa basharahu bihaulihi wa quwwatih."
-                            </p>
-                            <p class="text-xs text-slate-700 font-medium">
-                                Artinya: "Aku bersujud kepada Tuhan yang telah menciptakan jiwaku, membentuk rupa, dan membuka pendengaran serta penglihatanku dengan daya dan kekuatan-Nya."
-                            </p>
+                            <div class="bg-white rounded-xl border border-emerald-100 p-4 sm:p-5 space-y-3">
+                                <p class="text-xs font-bold text-emerald-800">Bacaan berurutan (dibaca menyambung)</p>
+                                <p class="arabic-text text-right font-semibold text-emerald-950 py-2 leading-loose" dir="rtl">
+                                    سُبْحَانَ اللَّهِ، وَالْحَمْدُ لِلَّهِ، وَاللَّهُ أَكْبَرُ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ
+                                </p>
+                                <p class="text-sm text-slate-700 italic leading-relaxed">Subhanallah, walhamdulillah, wallahu akbar, wa la haula wa la quwwata illa billahil 'aliyyil 'azim.</p>
+                                <p class="text-xs text-slate-600">Artinya: Mahasuci Allah, segala puji bagi Allah, Allah Mahabesar, dan tidak ada daya serta kekuatan kecuali dengan pertolongan Allah Yang Mahatinggi lagi Mahaagung.</p>
+                            </div>
                         </div>
 
                         <div class="bg-amber-50 p-4 rounded-xl text-xs text-amber-900 space-y-1 border border-amber-200">
@@ -933,7 +941,7 @@
                         <i class="fa-solid fa-print mr-2"></i>Cetak Paket LKM
                     </button>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-4">
                     <div class="border border-slate-200 rounded-2xl p-4 space-y-3">
                         <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center"><i class="fa-solid fa-table-list"></i></div>
                         <h3 class="font-bold text-slate-800">LKM 1: Kenali Jenis Sujud</h3>
@@ -957,6 +965,12 @@
                         <h3 class="font-bold text-slate-800">LKM 4: Refleksi</h3>
                         <p class="text-xs text-slate-600">Mengevaluasi pemahaman setelah kegiatan belajar.</p>
                         <button onclick="printLKM('lkm-4')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-bold py-2.5 rounded-xl"><i class="fa-solid fa-print mr-1"></i>Cetak LKM 4</button>
+                    </div>
+                    <div class="border border-slate-200 rounded-2xl p-4 space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center"><i class="fa-solid fa-person-chalkboard"></i></div>
+                        <h3 class="font-bold text-slate-800">LKM 5: Praktik Sujud</h3>
+                        <p class="text-xs text-slate-600">Panduan praktik berkelompok untuk tiga jenis sujud pada pertemuan berikutnya.</p>
+                        <button onclick="printLKM('lkm-5')" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white text-sm font-bold py-2.5 rounded-xl"><i class="fa-solid fa-print mr-1"></i>Cetak LKM 5</button>
                     </div>
                 </div>
                 <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-900">
@@ -1057,6 +1071,80 @@
                     <div><p class="font-bold">4. Bagian materi yang paling saya pahami adalah...</p><div class="lkm-answer-line"></div></div>
                     <div><p class="font-bold">5. Bagian yang masih ingin saya tanyakan adalah...</p><div class="lkm-answer-line"></div></div>
                     <div><p class="font-bold">Kesimpulan belajar saya:</p><div class="lkm-answer-line"></div><div class="lkm-answer-line"></div></div>
+                </div>
+            </article>
+
+            <!-- Printable LKM 5: Praktik pada pertemuan berikutnya -->
+            <article id="lkm-5" class="lkm-sheet bg-white text-slate-900 rounded-xl border border-slate-200 shadow-sm p-6 sm:p-8 space-y-4">
+                <div class="text-center border-b-2 border-emerald-700 pb-3">
+                    <p class="text-xs font-bold tracking-widest print-green">LEMBAR KERJA MURID • PAI DAN BUDI PEKERTI</p>
+                    <h2 class="text-xl font-extrabold mt-1">LKM 5: PRAKTIK TIGA JENIS SUJUD</h2>
+                    <p class="text-sm">Kelas VII SMP • Materi Sujud Syukur, Sahwi, dan Tilawah • ATP 7.1.1</p>
+                </div>
+                <div class="grid grid-cols-2 gap-x-8 gap-y-3 text-sm">
+                    <p>Nama: __________________________________</p><p>Kelas: ______________</p>
+                    <p>Nomor Absen: __________________________</p><p>Tanggal praktik: _____________</p>
+                    <p class="col-span-2">Kelompok: ________________________________</p>
+                </div>
+                <div>
+                    <h3 class="font-bold print-green">Tujuan Kegiatan</h3>
+                    <p class="text-sm">Mempraktikkan urutan dan menjelaskan ketentuan dasar sujud syukur, sujud sahwi, dan sujud tilawah sesuai materi pembelajaran.</p>
+                </div>
+                <div class="border border-slate-300 rounded-lg p-3 text-sm">
+                    <strong>Aturan praktik:</strong>
+                    <ol class="list-decimal pl-5 mt-1 space-y-1">
+                        <li>Bekerjalah dalam kelompok kecil. Bergiliran menjadi praktikan, pengamat, dan pencatat.</li>
+                        <li>Peragakan gerakan secara tertib dan hormat. Untuk sujud sahwi, jelaskan konteksnya sebagai bagian dari salat, bukan membuat kesalahan salat sungguhan.</li>
+                        <li>Ikuti penjelasan guru mengenai tata cara yang digunakan di kelas. Jika ada perbedaan rincian fikih, catat dan tanyakan dengan santun.</li>
+                        <li>Praktik ini adalah simulasi pembelajaran, bukan pengganti bimbingan ibadah dari guru.</li>
+                    </ol>
+                </div>
+                <div>
+                    <h3 class="font-bold print-green">A. Lembar Observasi Praktik</h3>
+                    <p class="text-xs mt-1">Beri tanda centang pada kolom yang sesuai dan tuliskan catatan bila diperlukan.</p>
+                    <table class="w-full border-collapse text-xs mt-2">
+                        <thead><tr>
+                            <th class="border border-slate-500 p-2 text-left">Jenis sujud</th>
+                            <th class="border border-slate-500 p-2 text-left">Hal yang diamati</th>
+                            <th class="border border-slate-500 p-2 text-center">Sudah</th>
+                            <th class="border border-slate-500 p-2 text-center">Perlu latihan</th>
+                            <th class="border border-slate-500 p-2 text-left">Catatan</th>
+                        </tr></thead>
+                        <tbody>
+                            <tr><td class="border border-slate-500 p-2 font-bold" rowspan="3">Sujud Syukur</td><td class="border border-slate-500 p-2">Menjelaskan sebab pelaksanaan</td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td></tr>
+                            <tr><td class="border border-slate-500 p-2">Menjelaskan persiapan dan ketentuan dasar</td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td></tr>
+                            <tr><td class="border border-slate-500 p-2">Memperagakan satu kali sujud dengan tertib</td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td></tr>
+                            <tr><td class="border border-slate-500 p-2 font-bold" rowspan="3">Sujud Sahwi</td><td class="border border-slate-500 p-2">Menjelaskan contoh sebab lupa/ragu dalam salat</td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td></tr>
+                            <tr><td class="border border-slate-500 p-2">Menjelaskan konteks dan waktu pelaksanaan sesuai materi kelas</td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td></tr>
+                            <tr><td class="border border-slate-500 p-2">Memperagakan dua kali sujud dalam simulasi yang dipandu guru</td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td></tr>
+                            <tr><td class="border border-slate-500 p-2 font-bold" rowspan="3">Sujud Tilawah</td><td class="border border-slate-500 p-2">Mengenali konteks membaca/mendengar ayat sajdah</td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td></tr>
+                            <tr><td class="border border-slate-500 p-2">Membedakan praktik di dalam dan di luar salat berdasarkan materi</td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td></tr>
+                            <tr><td class="border border-slate-500 p-2">Memperagakan urutan yang dipelajari dengan tertib</td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <h3 class="font-bold print-green">B. Analisis dan Refleksi Kelompok</h3>
+                    <p class="text-sm mt-1">1. Apa perbedaan paling penting antara ketiga jenis sujud?</p>
+                    <div class="lkm-answer-line"></div><div class="lkm-answer-line"></div>
+                    <p class="text-sm mt-2">2. Bagian praktik yang sudah dikuasai kelompok kami:</p>
+                    <div class="lkm-answer-line"></div>
+                    <p class="text-sm mt-2">3. Bagian yang perlu kami latih atau tanyakan kepada guru:</p>
+                    <div class="lkm-answer-line"></div>
+                </div>
+                <div>
+                    <h3 class="font-bold print-green">C. Penilaian Guru</h3>
+                    <table class="w-full border-collapse text-xs mt-2">
+                        <thead><tr><th class="border border-slate-500 p-2 text-left">Aspek</th><th class="border border-slate-500 p-2 text-center">1</th><th class="border border-slate-500 p-2 text-center">2</th><th class="border border-slate-500 p-2 text-center">3</th><th class="border border-slate-500 p-2 text-center">4</th></tr></thead>
+                        <tbody>
+                            <tr><td class="border border-slate-500 p-2">Ketepatan menjelaskan sebab dan jenis sujud</td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td></tr>
+                            <tr><td class="border border-slate-500 p-2">Urutan dan ketertiban praktik sesuai panduan guru</td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td></tr>
+                            <tr><td class="border border-slate-500 p-2">Kerja sama dan sikap saat praktik</td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td><td class="border border-slate-500 p-2"></td></tr>
+                        </tbody>
+                    </table>
+                    <p class="text-xs mt-2">Skala: 1 = perlu bimbingan, 2 = mulai berkembang, 3 = baik, 4 = sangat baik.</p>
+                    <p class="text-sm mt-3">Catatan guru: ______________________________________________________________</p>
+                    <div class="lkm-answer-line"></div>
                 </div>
             </article>
         </section>
